@@ -27,12 +27,23 @@ app.get('/', function(req, res){
 	res.end();
 });
 
-//Register new user
+//Retrieve matched jobs from DB
 app.post('/getMatchedJobs', function (req, res) {
 	console.log("Register req received. Email: " + req.body.userEmail);
 
 	//Get jobs from db
-	//..
+	//Todo
+
+	res.write("success");
+	res.end();
+});
+
+//Retrieve current UserType from DB
+app.post('/getCurrentUserType', function (req, res) {
+	console.log("Register req received. Email: " + req.body.userEmail);
+
+	//Get UserType from db
+	//Todo
 
 	res.write("success");
 	res.end();

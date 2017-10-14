@@ -1,47 +1,62 @@
+var allCareers = {
+    nurse: "Nurse",
+    pharmacist: "Pharmacist",
+    healthWorker: "Health Care Worker",
+    waiter: "Waiter",
+    manager: "Manager",
+    chef: "Chef",
+    juniorSeamstress : "Junior Seamstress",
+    seniorSeamstress : "Senior Seamstress",
+    suitTailor : "Suit Tailor",
+    salesAssistant : "Sales Assistant",
+    salesManager : "Sales Manager",
+    insuranceBroker : "Insurance Broker",
+    financialAdvisor : "Financial Advisor"
+};
+
 var healthCareCourse = {
-    category : "Health Care",
-    careers: {
-        nurse: "Nurse",
-        pharmacist: "Pharmacist",
-        healthWorker: "Health Care Worker"
-    }
-}
+    category: "Health Care",
+    careers: [
+        allCareers.nurse,
+        allCareers.pharmacist,
+        allCareers.healthWorker
+    ]
+};
 
 var foodAndBeverageCourse = {
     category : "Food and Beverage",
-    careers: {
-        waiter: "Waiter",
-        manager: "Manager",
-        chef: "Chef"
-    }
+    careers: [
+        allCareers.waiter,
+        allCareers.manager,
+        allCareers.chef
+    ]
 }
 
 var sewingCourse = {
     category : "Sewing",
-    careers : {
-        juniorSeamstress : "Junior Seamstress",
-        seniorSeamstress : "Senior Seamstress",
-        suitTailor : "Suit Tailor"
-    }
+    careers : [
+        allCareers.juniorSeamstress,
+        allCareers.seniorSeamstress,
+        allCareers.suitTailor
+    ]
 }
 
 var salesCourse = {
     category: "Sales",
-    careers: {
-        salesAssistant : "Sales Assistant",
-        salesManager : "Sales Manager"
-    }
+    careers: [
+        allCareers.salesAssistant,
+        allCareers.salesManager
+    ]
 }
 
 var financialServicesCourse = {
     category: "Financial Services",
-    careers: {
-        insuranceBroker : "Insurance Broker",
-        financialAdvisor : "Financial Advisor"
-    }
+    careers: [
+        allCareers.insuranceBroker,
+        allCareers.financialAdvisor
+    ]
 }
 
 var india = [healthCareCourse, foodAndBeverageCourse];
 
 var kenya = [sewingCourse, salesCourse, financialServicesCourse];
-

@@ -36,8 +36,6 @@ app.controller('UserController', [
     }
 
     $scope.populateJobs = function() {
-        //
-
         if ($scope.userEmail == "")
         {
             $scope.userEmail = sessionStorage.getItem("userEmail");
@@ -47,10 +45,7 @@ app.controller('UserController', [
             function success(res){
                 if(res.status == 200){
                     //Set jobs array to response
-                    for (var i = 0; i < 6; i++) {
-                        var send = '"name": ' + names[i] + ', "desc": ' + names[i];
-                        $scope.jobs.push(send);
-                    }
+                    //Todo
 
                     /*
                     if(res.data != undefined && res.data[0] != undefined){
@@ -71,7 +66,52 @@ app.controller('UserController', [
         );
     }
 
-    /* Helper Methods */
+    /* User Views */
+    //$scope.currentUserType = "jobSeeker";
+    $scope.currentUserType = "jobProvider";
+    var candidates = ["Jack A", "Jill B", "Bob B", "Bill E", "Litho P", "Thabo F", "Jack G", "Lily B", "Jeff R", "Ken M"];
+    var jobApplied = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach", "Car Salesman", "Mobile Dev", "Hockey Coach", "Hockey Coach"];
+
+    $scope.workers = [];
+    for (var i = 0; i < candidates.length; i++) {
+        $scope.workers.push({
+            candidate: candidates[i],
+            jobApply: jobApplied[i]
+        });
+    }
+
+    $scope.setcurrentUserType = function (id) {
+        if ($scope.userEmail == "")
+        {
+            $scope.userEmail = sessionStorage.getItem("userEmail");
+        }
+
+        UserService.getCurrentUserType($scope.userEmail).then(
+            function success(res){
+                if(res.status == 200){
+                    //Set jobs array to response
+
+
+                    /*
+                    if(res.data != undefined && res.data[0] != undefined){
+                        $scope.userFullname = JSON.parse(res.data[0]).fullname;
+                    }
+                    */
+                } else {
+                    console.log("Not success res");
+                    console.log(res);
+                    return;
+                }
+            },
+            function failure(res){
+                console.log("FAILURE");
+                console.log(res);
+                return;
+            }
+        );
+    };
+
+    /* Example Methods */
     $scope.setActiveExploreID = function (id) {
         if (id == $scope.activeExploreID) {
             id = null;
