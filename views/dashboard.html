@@ -1,30 +1,49 @@
 <div class="container-fluid">
     <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
     <div class="dashboard w3-animate-top">
-        <h2 style = "text-align: center;">Available jobs</h2>
-        <h6 style = "text-align: center;"><i>Matched according to your skillset</i></h6>
-        <center>
-            <div class="grid">
 
-                <div class="item w3-card-4" ng-click="goRouteTo('/my_datasets');" ng-repeat = "j in jobs">
-                    <div class="caption">
-                        <span>{{j.name}}</span>
+        <div ng-if = "currentUserType == 'jobSeeker'">
+             <h2 style = "text-align: center;">Available jobs</h2>
+            <h6 style = "text-align: center;"><i>Matched according to your skillset</i></h6>
+            <center>
+                <div class="grid">
+                    <div class="item w3-card-4" ng-click="goRouteTo('/jobmatching');" ng-repeat = "j in jobs">
+                        <div class="caption">
+                            <span>{{j.name}}</span>
+                        </div>
+                        <div class="icon" style = "background: #3498db; color: white; text-align: left;">
+                            <span><b>Company:</b><br/> {{j.company}}</span>
+                            <br/>
+                            <span><b>Pay:</b><br/> {{j.pay}}</span>
+                            <br/>
+                            <span><b>Description:</b><br/> {{j.desc}}</span>
+                        </div>
                     </div>
-                    <div class="icon" style = "background: #3498db; color: white; text-align: left;">
-                        <span><b>Company:</b><br/> {{j.company}}</span>
-                        <br/>
-                        <span><b>Pay:</b><br/> {{j.pay}}</span>
-                        <br/>
-                        <span><b>Description:</b><br/> {{j.desc}}</span>
-                    </div>
+                    <br/>
+                    <br/>
                 </div>
-                <br/>
-                <br/>
-            </div>
-        </center>
-
-        <div class="additionalInfo">
-            <!-- Add some content for the dashboard -->
+            </center>
         </div>
+    
+        <div ng-if = "currentUserType == 'jobProvider'">
+             <h2 style = "text-align: center;">Available candidates</h2>
+            <h6 style = "text-align: center;"><i>Matched according to your job criteria</i></h6>
+            <center>
+                <div class="grid">
+                    <div class="item w3-card-4" ng-click="goRouteTo('/jobmatching');" ng-repeat = "w in workers">
+                        <div class="caption">
+                            <span>{{w.candidate}}</span>
+                        </div>
+                        <div class="icon" style = "background: #3498db; color: white; text-align: left;">
+                            <span><b>Job:</b><br/> {{w.jobApply}}</span>
+                            <br/>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+            </center>
+        </div>
+
     </div>
 </div>
