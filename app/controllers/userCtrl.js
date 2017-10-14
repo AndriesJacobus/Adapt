@@ -8,11 +8,6 @@ app.controller('UserController', [
     $scope.activeDataset = null;
     $scope.showTrendProfileHistory = false;
     $scope.showingSampleData = false;
-    $scope.url = 'uploads';
-    $scope.fileToUp = "";
-    $scope.datasetFileUpload = null;
-    $scope.schemaFileUpload = null;
-    $scope.accessModifier = "Private";
     $scope.activeExploreID = null;
 
     /* Stats Vars */
@@ -24,45 +19,64 @@ app.controller('UserController', [
     /* Trends Page */
     $scope.datasetMessage = "dataset";
 
-    /* Helper Methods */
+    /* Jobs */
+    var names = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach"];
+    var companies = ["DevTec", "MERC", "JSE", "BMW", "Facebook", "RSA"];
+    var pays = ["R20 000pm", "R10 000pm", "R15 000pm", "R5 000pm", "R1pm", "R500 000pm"];
+    var descriptions = ["Develop web stuff", "Sell general", "Sell stocks", "Sell cars", "Develop apps", "Teach hochey"];
 
+    $scope.jobs = [];
+    for (var i = 0; i < 6; i++) {
+        $scope.jobs.push({
+            name: names[i],
+            company: companies[i],
+            pay: pays[i],
+            desc: descriptions[i]
+        });
+    }
+
+    $scope.populateJobs = function() {
+        //
+
+        if ($scope.userEmail == "")
+        {
+            $scope.userEmail = sessionStorage.getItem("userEmail");
+        }
+
+        UserService.getMatchedJobs($scope.userEmail).then(
+            function success(res){
+                if(res.status == 200){
+                    //Set jobs array to response
+                    for (var i = 0; i < 6; i++) {
+                        var send = '"name": ' + names[i] + ', "desc": ' + names[i];
+                        $scope.jobs.push(send);
+                    }
+
+                    /*
+                    if(res.data != undefined && res.data[0] != undefined){
+                        $scope.userFullname = JSON.parse(res.data[0]).fullname;
+                    }
+                    */
+                } else {
+                    console.log("Not success res");
+                    console.log(res);
+                    return;
+                }
+            },
+            function failure(res){
+                console.log("FAILURE");
+                console.log(res);
+                return;
+            }
+        );
+    }
+
+    /* Helper Methods */
     $scope.setActiveExploreID = function (id) {
         if (id == $scope.activeExploreID) {
             id = null;
         }
         $scope.activeExploreID = id;
-    };
-
-    $scope.showSampleData = function(val){
-        if (val == true){
-            DataService.getDataSamples($scope.activeDataset.datasetID).then(
-                function success(res){
-                    if (res.status == 200 && res.data != undefined && res.data != null && JSON.parse(res.data).result != "failed"){
-                        $scope.activeDataset.dataSamples = JSON.parse(res.data).result;
-                    } else {
-                        var msg = "Ooops! Well this is embarrassing. ";
-                        msg += "Something went wrong trying to retrieve data samples for ";
-                        msg += $scope.activeDataset.datasetName;
-                        msg += ". Please try again later.";
-                        var code = 400;
-                        console.log(res.data + " <> " + code + " <> " + msg);
-                        //$location.url('/error?errCode=' + code + '&errText=' + msg);
-                        return;
-                    }
-                },
-                function failure(res){
-                    console.log(res.data);
-                    var msg = "Ooops! Well this is embarrassing. ";
-                    msg += "Something went wrong trying to retrieve data samples for ";
-                    msg += $scope.activeDataset.datasetName;
-                    msg += ". Please try again later.";
-                    var code = res.status;
-                    //$location.url('/error?errCode=' + code + '&errText=' + msg);
-                    return;
-                }
-            );
-        }
-        $scope.showingSampleData = val;
     };
 
     $scope.setActiveDataset = function(dataset){
@@ -100,38 +114,6 @@ app.controller('UserController', [
 
     $scope.goRouteTo = function(route){
         $location.path(route);
-    };
-
-    $scope.getDatasets = function(){
-        DataService.getUserDatasets($scope.userEmail).then(
-            function success(res) {
-                if (res.status == 200 && res.data !== undefined && res.data !== null){
-                    if (res.data.result != "failed" && res.data.result.my_data !== undefined){
-                        $scope.datasets = res.data.result.my_data;
-                        console.log($scope.datasets);
-                    } else {
-                        $scope.datasets = [];
-                    }
-                } else {
-                    console.log(res.data);
-                    var msg = "Ooops! Well this is embarrassing. ";
-                    msg += "Something went wrong trying to retrieve your datasets. ";
-                    msg += "Please try again later.";
-                    var code = res.status;
-                    $location.path('/error?errCode=' + code + '&errText=' + msg);
-                    return;
-                }
-            },
-            function failure(res) {
-                console.log(res.data);
-                var msg = "Ooops! Well this is embarrassing. ";
-                msg += "Something went wrong trying to retrieve your datasets. ";
-                msg += "Please try again later.";
-                var code = res.status;
-                $location.url('/error?errCode=' + code + '&errText=' + msg);
-                return;
-            }
-        );
     };
 
     $scope.getUserName = function(userEmail){

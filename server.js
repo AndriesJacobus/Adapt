@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use("/", express.static(__dirname));
 
 var server = app.listen(7000, function () {
-   var host = server.address().address
-   var port = server.address().port
+   var host = server.address().address;
+   var port = server.address().port;
 
    console.log("Adapt listening at http://%s:%s", host, port);
    console.log(__dirname);
@@ -24,6 +24,17 @@ var server = app.listen(7000, function () {
 
 app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname+"/index.html"));
+	res.end();
+});
+
+//Register new user
+app.post('/getMatchedJobs', function (req, res) {
+	console.log("Register req received. Email: " + req.body.userEmail);
+
+	//Get jobs from db
+	//..
+
+	res.write("success");
 	res.end();
 });
 
@@ -50,6 +61,7 @@ app.post('/executeLogin', function (req, res) {
 
 app.post('/executeLogout', function(req, res) {
 	//Clear the node session
+	/*
 	req.session.destroy(function(err) {
 		if(err){
 			res.write("failed");
@@ -59,12 +71,20 @@ app.post('/executeLogout', function(req, res) {
 		res.write("success");
 		res.end();
 	});
+	*/
+
+	res.write("success");
+	res.end();
 });
 
 //New queries - User Service
 
 app.post('/getUserFullName', function (req,res) {
 	console.log("Get user full name req received. Email: " + req.body.userEmail);
+
+	res.setHeader('Content-Type', 'application/json');
+	res.write(JSON.stringify(""));
+	res.end();
 });
 
 //Execute login

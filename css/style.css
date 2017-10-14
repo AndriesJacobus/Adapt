@@ -93,10 +93,10 @@ div.container-fluid.error img{
 
 /* Register */
 .registerLogin{
+    margin-left: auto;
+    margin-right: auto;
     height: 50vh;
-    margin-top: 20vh;
     width: 60vw;
-
 }
 
 .registerLogin .panel-heading{
@@ -186,22 +186,22 @@ ul.nav.navbar-nav a:hover {
 
 .grid {
     padding-top: 5vh;
-    display: flex;
     justify-content: space-between;
 }
 
 .dashboard .grid .item {
-    max-width: 300px;
-    min-width: 100px;
-    width: 100vw;
-    text-align: center;
-    background-color: #3498db;/*#0CB4DA;*/
-    flex: 1;
-    margin: 0px 20px 0px 0px;
-}
+    display: inline-block;
+    vertical-align: top; /* BASELINE CORRECCIÓN*/
 
-.dashboard .grid .item:nth-child(4){
-    margin: 0px 0px 0px 0px;
+    max-width: 150px;
+    width: 40vw;
+
+    text-align: center;
+    background-color: #3498db;
+    
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .dashboard .grid .item:hover{

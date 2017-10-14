@@ -19,5 +19,9 @@ app.factory('UserService', ['$http', function($http){
         return $http.post('/checkLogin', { userEmail: userEmail });
     };
 
+    userServiceObj.getMatchedJobs = function(userEmail){
+        return $http.post('/getMatchedJobs', { userEmail: userEmail });
+    };
+
     return userServiceObj;
 }]);
