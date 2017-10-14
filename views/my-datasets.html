@@ -1,0 +1,232 @@
+<div class="container-fluid">
+    <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
+    <button class="w3-card-4 w3-right upload-btn" data-toggle="modal" data-target="#uploadModal">
+        Upload Dataset
+    </button>
+    <div id="uploadModal" class="modal fade uploader" role="dialog">
+            <div class="modal-dialog uploader">
+
+                <!-- Modal content-->
+                <div class="modal-content uploader">
+                    <div class="modal-header">
+                        <div class="close-upload" style="float:right" data-dismiss="modal">
+                            <img src="../css/media/icons/c_b_48.png"/>
+                        </div>
+                        <span class="glyphicon glyphicon-cloud-upload"></span>
+                        <div class="headingContainer">
+                            <h4 class="modal-title">Upload Your Data</h4>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div>
+                                    <span>
+                                        <p>Select whether you would like other users of the system to be able to use your dataset</p>
+                                    </span>
+                                    <select class="form-control" ng-model="accessModifier">
+                                        <option>Private</option>
+                                        <option>Public</option>
+                                    </select>
+                                </div>
+                                <!-- <hr> -->
+                                <h3>Schema upload</h3>
+                                <div>
+                                    <form>
+                                        <div class="uploadInput">
+                                            <span>Choose File</span>
+                                            <input ngf-select ngf-max-height="1000" value="Select Schema File" type="file" ng-model="schemaFileUpload" kind=".csv" class="uploadBtn">
+                                        </div>
+                                        <button class="btn" ng-click="uploadSchema()">Upload Schema</button>
+                                    </form>
+                                    <div class="progressBar">
+                                        <span class="progress" ng-show="schemaFileUpload.progress >= 0">
+                                          <div style="width:{{schemaFileUpload.progress}}%" ng-bind="schemaFileUpload.name + ': ' + schemaFileUpload.progress + '%'"></div>
+                                        </span>
+                                    </div>
+                                    <span class='message'>
+                                        <p>The file should be a csv file containing a comma separated list of the column names in the dataset.</p>
+                                    </span>
+                                </div>
+
+                                <h3>Dataset upload</h3>
+                                <div>
+                                    <form>
+                                        <div class="uploadInput">
+                                            <span>Choose File</span>
+                                            <input ngf-select ngf-max-height="1000" value="Select File" type="file" ng-model="datasetFileUpload" kind=".csv, .json, .xlsx, .xml" class="uploadBtn">
+                                        </div>
+                                        <button class="btn" ng-click="uploadDataset()">Upload Dataset</button>
+                                    </form>
+                                    <div class="progressBar">
+                                        <span class="progress" ng-show="datasetFileUpload.progress >= 0">
+                                          <div style="width:{{datasetFileUpload.progress}}%" ng-bind="datasetFileUpload.name + ': ' + datasetFileUpload.progress + '%'"></div>
+                                        </span>
+                                    </div>
+                                    <span>
+                                        <p>The file should be a csv, xlsx, xls, json or xml file.</p>
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <div ng-if="!activeDataset" class="datasets w3-animate-top">
+        <h1>My Datasets</h1>
+        <div class="grid" ng-if="datasets.length > 0">
+            <div class="item w3-card-4" ng-repeat="d in datasets">
+                <div class="icon" ng-click="setActiveDataset(d);">
+                    <img src="../css/media/icons/b_w_96.png" alt="view dataset"/>
+                </div>
+                <div class="actions">
+                    <div class="tooltip action  w3-animate-left" ng-click="changeAccessMod(d.datasetID, d.access_mod);">
+                        <img src="../css/media/icons/c_u_w_24.png" alt="change access modifier"/>
+                        <span ng-if="d.access_mod == 'Private'" class="tooltiptext">Make this dataset public</span>
+                        <span ng-if="d.access_mod == 'Public'" class="tooltiptext">Make this dataset private</span>
+                    </div>
+                    <div class="tooltip action  w3-animate-right">
+                        <a ng-href="{{d.download_path}}" download><img src="../css/media/icons/g_a_w_24.png" alt="download dataset"/></a>
+                        <span class="tooltiptext">Download this dataset</span>
+                    </div>
+                    <div class="tooltip action  w3-animate-left" ng-click="deleteDataset(d.datasetName, d.datasetID);">
+                        <img src="../css/media/icons/d_f_w_24.png" alt="delete dataset"/>
+                        <span class="tooltiptext">Delete this dataset from your collection</span>
+                    </div>
+                </div>
+                <div class="caption">
+                    <span>{{d.datasetName}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="w3-card-4 alert alert-warning" ng-if="datasets.length == 0">
+            <span>You have no datasets!<br /><a data-toggle="modal" data-target="#uploadModal">Try uploading</a> your first dataset or add datasets from here: <a href="#/explore">Explore</a></span>
+        </div>
+    </div>
+    <div ng-if="activeDataset" class="active-dataset w3-animate-right">
+        <h1>{{activeDataset.datasetName}}</h1>
+        <div ng-if="showingSampleData == true" class="w3-card-4 w3-animate-left viewData">
+            <div class="close-active-dataset" ng-click="showSampleData(!showingSampleData);"><img src="../css/media/icons/c_b_48.png"/></div>
+            <h2>Data Samples</h2>
+            <div class="w3-card-2 alert alert-warning" ng-if="activeDataset.dataSamples == null || activeDataset.dataSamples == []">
+                <span>This dataset has no sample data.</span>
+            </div>
+            <div class="table-responsive" ng-if="activeDataset.dataSamples.length > 0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="a in activeDataset.attributes">{{a}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="ds in activeDataset.dataSamples">
+                            <td ng-repeat="val in ds">{{val}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{activeDataset.recordCount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="close-active-dataset" ng-click="setActiveDataset(null);"><img src="../css/media/icons/c_b_48.png"/></div>
+        <div class="grid" style="clear:right" >
+            <div class="item w3-card-4" ng-click="showSampleData(!showingSampleData);">
+                <div class="icon">
+                    <img src="../css/media/icons/l_w_96.png" alt="view datasets"/>
+                </div>
+                <div class="caption">
+                    <span>View Data</span>
+                </div>
+            </div>
+            <div class="item w3-card-4" ng-click="goRouteTo('/statistics');">
+                <div class="icon">
+                    <img src="../css/media/icons/e_w_96.png" alt="explore data"/>
+                </div>
+                <div class="caption">
+                    <span>Statistics</span>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div ng-if="showTrendProfileHistory" class="w3-card-4 w3-animate-left trendHistory">
+            <div class="close-active-dataset" ng-click="showTrendHistory(false);"><img src="../css/media/icons/c_b_48.png"/></div>
+            <h2>Trend Profile History</h2>
+            <div class="w3-card-4 alert alert-warning" ng-if="activeDataset.trendProfileHistory.length == 0">
+                <span>You have no trend profile history with this dataset!<br />First <a href="#" ng-click = "goRouteTo('/data_tools');">generate trends</a> on this data.</span>
+            </div>
+            <div class="table-responsive" ng-if="activeDataset.trendProfileHistory.length > 0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Number of Clusters</th>
+                            <th>Algorithm Used</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="tp in activeDataset.trendProfileHistory">
+                            <td>{{tp.trendProfileID}}</td>
+                            <td>{{tp.nr_clusters}}</td>
+                            <td>{{tp.algorithmName}}</td>
+                            <td>{{tp.dateGenerated}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <h2>Additional Tools</h2>
+        <div class="grid">
+            <div class="item w3-card-4" ng-click="showTrendHistory(!showTrendProfileHistory);">
+                <div class="icon">
+                    <img src="../css/media/icons/h_w_96.png" alt="trend history"/>
+                </div>
+                <div class="caption">
+                    <span>View Trend Profile History</span>
+                </div>
+            </div>
+            <div class="item w3-card-4" ng-click="goRouteTo('/data_tools');">
+                <div class="icon">
+                    <img src="../css/media/icons/f_w_96.png" alt="generate trends"/>
+                </div>
+                <div class="caption">
+                    <span>Generate Trends</span>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <h2>Additional Infomation</h2>
+        <div class="grid summary">
+            <div class="item w3-card-4">
+                <div class="icon">
+                    {{activeDataset.recordCount}}
+                </div>
+                <div class="caption">
+                    <span>Number of records</span>
+                </div>
+            </div>
+            <div class="item w3-card-4">
+                <div class="icon">
+                    {{activeDataset.attributes.length}}
+                </div>
+                <div class="caption">
+                    <span>Number of Attributes</span>
+                </div>
+            </div>
+            <div class="item w3-card-4">
+                <div class="icon">
+                    {{activeDataset.uploadDate}}
+                </div>
+                <div class="caption">
+                    <span>Date uploaded</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

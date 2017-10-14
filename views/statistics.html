@@ -1,0 +1,111 @@
+
+<div class="container-fluid" data-ng-init="getDatasets()">
+    <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
+    <div class="stats w3-animate-top">
+        <h1>Statistics</h1>
+        <hr/>
+
+        <h2>Select dataset:</h2>
+
+        <div class="w3-card-4 alert alert-warning" ng-if="datasets.length == 0">
+            <span>You have no datasets!<br /><a data-toggle="modal" data-target="#uploadModal">Try uploading</a> your first dataset or add datasets from here: <a href="#/explore">Explore</a></span>
+        </div>
+
+        <div class = "row">
+            <!--
+            <a href="#" id="right-btn" style = "position: absolute; left: 0;">
+                <img src="../css/media/icons/back.png" style = "width: 50px; height: auto;" />
+            </a>
+            -->
+
+            <div id = "datasetScroller" class = "scroller customScrollBar" ng-if="datasets.length > 0">
+
+                <div class="grid">
+                    <div class="item w3-card-4" ng-repeat="d in datasets" ng-click="toggleActiveDataset(d);">
+                        <div class="icon">
+                            <img src="../css/media/icons/b_w_96.png" alt="view dataset"/>
+                        </div>
+
+                        <div class="caption">
+                            <span>{{d.datasetName}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!--
+            <a href="#" id="left-btn" style = "position: absolute; right: 0;">
+                <img src="../css/media/icons/next.png" style = "width: 50px; height: auto;" />
+            </a>
+            -->
+        </div>
+
+        <div ng-if="activeDataset">
+            <h2>Choose attributes for {{activeDataset.datasetName}}</h2>
+
+            <div class="w3-card-2 alert alert-warning" ng-if="activeDataset.dataSamples == null || activeDataset.dataSamples == []">
+                <br/>
+                <span>This dataset has no sample data.</span>
+            </div>
+
+            <div class = "scroller customScrollBar" ng-if="activeDataset.dataSamples.length > 0">
+                <div class="grid" ng-if="datasets.length > 0">
+                    <div class="item w3-card-4" ng-repeat="a in activeDataset.attributes" ng-click="alternateAttribute(a)">
+                        <div class="icon">
+                            <img src="../css/media/icons/b_w_96.png" alt="view dataset"/>
+                        </div>
+
+                        <div class="caption">
+                            <span>{{a}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div ng-if="showingStats">
+            <h2>Table on {{activeDataset.datasetName}}</h2>
+            <h4><i>Click on a heading to view the graph for that statistic</i></h4>
+            <br/>
+
+            <div class = "scroller customScrollBar">
+                
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Attributes</th>
+                                <th ng-click="loadGraph('min')"><button type="button" class="btn btn-info">Min</button></th>
+                                <th ng-click="loadGraph('std_dev')"><button type="button" class="btn btn-info">Standard Deviation</button></th>
+                                <th ng-click="loadGraph('max')"><button type="button" class="btn btn-info">Max</button></th>
+                                <th ng-click="loadGraph('mean')"><button type="button" class="btn btn-info">Mean</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="attr in returnedStats">
+                                <td>{{attr.column_name}}</td>
+                                <td>{{attr.min}}</td>
+                                <td>{{attr.std_dev}}</td>
+                                <td>{{attr.max}}</td>
+                                <td>{{attr.mean}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="chart-container" ng-if = "returnedStats.length > 0">
+                <br/>
+                <a id = "chartcanvasDownload" type="button" class="btn btn-info" ng-click = "downloadGraph()" style = "margin-left: auto; margin-right: auto;" ng-if = "shoringGraphs">Download graph</a>
+                <canvas id="bar-chartcanvas"></canvas>
+            </div>
+        </div>
+
+        <br/>
+    </div>
+</div>
+
+<!--$scope.(this, 'bar-chartcanvas', 'graph' + date + '.png');-->

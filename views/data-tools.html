@@ -1,0 +1,121 @@
+<div class="container-fluid" style="background-color: #42a5f5; overflow-y: hidden;">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+		<nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
+		<div class="datatools">
+			<h1>Tools To Generate Your Trends</h1>
+			<div class="dataSentence">
+				<div>
+					I want to generate trends on
+					<!-- <p class="plainText">I want to generate trends on</p>  -->
+					<span class="standOut">
+						<a ng-click="changeDatasetListStatus()">{{datasetMessage}}</a>
+					</span>
+					<div class="dataToolsDatasetList">
+						<ul ng-class="datasetListStatus">
+							<li ng-repeat='d in datasets' ng-click = "setDataToolsSelectedDataset(d)">
+							{{d.datasetName}}</li>
+						</ul>
+					</div>
+					
+					<br/>
+					using
+					<!-- <p class="plainText">using</p> -->
+					<span class="standOut">
+						<a ng-click="changeAttributeListStatus()" class="attributeItems">attributes</a>
+					</span>
+					<div ng-class="attributeListStatus" ng-if = "dataToolsSelectedDataset != null" id="attributesHolder">
+						<div class="inbox">
+							<div class="item" ng-repeat='a in dataToolsSelectedDataset.attributes'>
+								<input type="checkbox">
+								<p class="attributeItem">{{a}}</p>
+							</div>
+							<button id = "fullOK" class="input-block-level" ng-click="changeAttributeListStatus()">OK</button>
+						</div>
+					</div>
+					<br>
+					<br>
+					with
+					<!-- <p class="plainText">with</p> -->
+					<span class="standOut">
+						<a ng-click="changeAlgorithmListStatus()">{{algorithmMessage}}</a>
+					</span>
+					<div class="dataToolsAlgorithmList">
+						<ul ng-class="algorithmListStatus">
+							<li ng-repeat="a in algorithms" ng-click="setDataToolsSelectedAlgo(a)">{{a.algorithmName}}</li>
+						</ul>
+					</div>
+					<br />
+					<br />
+					<br />
+					<div class="submitHolder" ng-if = "dataToolsSelectedDataset != null && setDataToolsSelectedAlgo != null">
+						<button type="button" class="submitButton btn-generate btn btn-default" ng-click="generateTrends()" style = "width: 23vw;">Generate Trends</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script>
+	$(document).ready(function(){
+		var checkboxes = null;
+		var arr = null;
+		var isSelected = false, isShifted = false;
+		var currIndex = -1, startIndex = -1, endIndex = -1;
+		$(".attributeItems").click(function(){
+			checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+			//console.log(checkboxes);
+			arr = [...checkboxes];
+			isSelected = false, isShifted = false;
+			currIndex = -1, startIndex = -1, endIndex = -1;
+			for(var i = 0; i < checkboxes.length; i++){
+				checkboxes[i].addEventListener('click', checker);
+				checkboxes[i].addEventListener('keydown', selector);
+			}
+		});
+		function checker(e){
+			isSelected = true;
+			currIndex = arr.findIndex(function(c) {
+				return (c.checked === true && c === e.target);
+			});
+			if(!isShifted){ return; }
+			endIndex = arr.findIndex(function(c) {
+				return (c.checked === true && c === e.target);
+			});
+			if (startIndex < endIndex){
+				fillCheckBoxes(startIndex, endIndex);
+			} else {
+				fillCheckBoxes(endIndex, startIndex);
+			}
+		}
+		function selector(e){
+			if(!isSelected){ return; }
+			if(e.key === "Shift" && (e.keyCode === 16 || e.which === 16)){
+				startIndex = currIndex;
+				isShifted = true;
+			}
+		}
+		function fillCheckBoxes(sI, eI) {
+			for(var i = sI; i <= eI && i < arr.length; i++){
+				if(arr[i] !== undefined){
+					arr[i].checked = true;
+				}
+			}
+			isShifted = false;
+			isSelected = false;
+		}
+		$(".btn-generate").click(function() {
+			console.log("in here");
+			var selectedAttributeList = [];
+			for(var i = 0; i < arr.length; i++){
+				if (arr[i].checked === true)
+					selectedAttributeList.push(1);
+				else
+					selectedAttributeList.push(0);
+			}
+			console.log(selectedAttributeList);
+			window.sessionStorage.setItem("selectedAttributes", selectedAttributeList);
+		});
+	});
+</script>

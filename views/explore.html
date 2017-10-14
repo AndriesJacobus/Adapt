@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
+    <div class="explorer">
+        <h1>Explore Public Datasets</h1>
+        <div class="search-box w3-card-2" ng-if="explorable_datasets.length > 0">
+            <div class="search-icon w3-animate-right"></div>
+            <div class="search-input w3-animate-left">
+                <input type="text" placeholder="Search" ng-model="searchInput" />
+            </div>
+        </div>
+        <div class="w3-card-4 alert alert-warning" ng-if="explorable_datasets.length == 0">
+            <span>
+                Unfortunately there aren't any publicly available dataset to display!
+                <br />
+                Head over to <a href="#/my_datasets">Datasets</a> and upload your own datasets.
+            </span>
+        </div>
+        <div class="grid" ng-if="explorable_datasets.length > 0">
+            <div class="item w3-card-4"
+                 ng-repeat="e in explorable_datasets | filter : searchInput"
+                 ng-click="setActiveExploreID(e.dataset_id);">
+                <div class="icon">
+                    <img src="../css/media/icons/b_w_96.png" alt="view dataset"/>
+                </div>
+                <div class="actions">
+                    <div class="tooltip action  w3-animate-right">
+                        <a ng-href="{{e.download_path}}" download><img src="../css/media/icons/g_a_w_24.png" alt="download dataset"/></a>
+                        <span class="tooltiptext">Download this dataset</span>
+                    </div>
+                    <div class="tooltip action  w3-animate-left" ng-click="addExplorableDataSet(e.dataset_id);">
+                        <img src="../css/media/icons/a_w_24.png" alt="add dataset"/>
+                        <span class="tooltiptext">Add this dataset to your dataset collection</span>
+                    </div>
+                </div>
+                <div class="caption w3-animate-left w3-card-8">
+                    <span>{{e.dataset_name}}</span>
+                    <div class="more table-responsive w3-animate-top" ng-if="activeExploreID != null && activeExploreID == e.dataset_id">
+                        <hr />
+                        <span>Number of records: {{e.record_count}}</span>
+                        <hr />
+                        <span>Date uploaded: {{e.upload_date}}</span>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <td ng-colspan="{{e.attributes.length}}"><h6>Attributes:</h6></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td ng-repeat="a in e.attributes">{{a}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

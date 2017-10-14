@@ -1,0 +1,34 @@
+<div class="container-fluid">
+	<div class="container registerLogin w3-animate-bottom">
+		<div class="row">
+	        <div class="col-md-4 col-md-offset-4">
+	            <div class="login-panel panel panel-default w3-card-4">
+	                <div class="panel-heading">
+	                    <h3 class="panel-title">Please Register</h3>
+	                </div>
+	                <div class="panel-body">
+	                    <form name="frmRegister" ng-submit="submit()">
+                            <div class="form-group">
+                                <input class="form-control" id = "uName" placeholder="Name" name="uName" type="string" value="" ng-model="name">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id = "uSurname" placeholder="Surname" name="uSurname" type="string" value="" ng-model="surname">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id = "email" placeholder="E-mail" name="email" type="email" autofocus ng-model="email">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id = "password" placeholder="Password" name="password" type="password" value="" ng-model="password">
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <input type="submit" value = "Register" class="btn btn-block" />
+	                    </form>
+	                    <div class="switch">
+	                    	<a href="/#/login">Already have an account?</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div> 
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TrendiApp">
+    <head>
+        <base href="/" />
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Adapt</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/lib/w3.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="app/lib/angular.min.js"></script>
+        <script src="app/lib/angular-route.min.js"></script>
+        <script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+        <script src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+
+        <!-- Angular App -->
+        <script src="app/app.js"></script>
+
+        <!-- Angular Services -->
+        <script src="app/services/userService.js"></script>
+        <script src="app/services/dataService.js"></script>
+        
+        <!-- Angular Controllers -->
+        <script src="app/controllers/adaptCtrl.js"></script>
+        <script src="app/controllers/navCtrl.js"></script>
+        <script src="app/controllers/registerCtrl.js"></script>
+        <script src="app/controllers/loginCtrl.js"></script>
+        <script src="app/controllers/userCtrl.js"></script>
+        <script src="app/controllers/errorCtrl.js"></script>
+
+        <!-- ChartJS -->
+        <script src="app/lib/Chart.js"></script>
+    </head>
+    <body ng-view>
+
+    </body>
+</html>

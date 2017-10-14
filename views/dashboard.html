@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
+    <div class="dashboard w3-animate-top">
+        <h1>Welcome {{userFullname}}</h1>
+        <div class="grid">
+
+            <div class="item w3-card-4" ng-click="goRouteTo('/my_datasets');">
+                <div class="icon">
+                    <img src="../css/media/icons/d_w_96.png" alt="view datasets" />
+                </div>
+                <div class="caption">
+                    <span>Datasets</span>
+                </div>
+            </div>
+            <div class="item w3-card-4" ng-click="goRouteTo('/data_tools');">
+                <div class="icon">
+                    <img src="../css/media/icons/dt_w_96.png" alt="view data tools" />
+                </div>
+                <div class="caption">
+                    <span>Data Tools</span>
+                </div>
+            </div>
+            <div class="item w3-card-4" ng-click="goRouteTo('/statistics');">
+                <div class="icon">
+                    <img src="../css/media/icons/e_w_96.png" alt="view statistics" />
+                </div>
+                <div class="caption">
+                    <span>Statistics</span>
+                </div>
+            </div>
+            <div class="item w3-card-4" ng-click="goRouteTo('/explore');">
+                <div class="icon">
+                    <img src="../css/media/icons/h_w_96.png" alt="explore datasets" />
+                </div>
+                <div class="caption">
+                    <span>Explore</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="additionalInfo">
+            <!-- Add some content for the dashboard -->
+        </div>
+    </div>
+</div>
