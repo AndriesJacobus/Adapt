@@ -3,6 +3,9 @@ app.controller('LoginController', ['$scope', '$rootScope', '$route', '$location'
 		$scope.password = "";
 		$scope.loginMessage = "Please Login";
 
+		/*=================================== Firebase login =====================================*/
+		/*========================================================================================*/
+
 		$scope.writeToSessionStorage = function(email){
 			window.sessionStorage.setItem("userEmail", email);
 		};

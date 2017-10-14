@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" ng-app="TrendiApp">
     <head>
         <base href="/" />
@@ -19,6 +19,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="app/lib/angular.min.js"></script>
         <script src="app/lib/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
         <script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
         <script src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -47,6 +48,19 @@
 
         <!-- ChartJS -->
         <script src="app/lib/Chart.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyC6q3esUVGfG1ehP37WxVVfp4FHMqaOYP8",
+            authDomain: "adapt-d36ef.firebaseapp.com",
+            databaseURL: "https://adapt-d36ef.firebaseio.com",
+            projectId: "adapt-d36ef",
+            storageBucket: "",
+            messagingSenderId: "974465971629"
+          };
+          firebase.initializeApp(config);
+        </script>
     </head>
     <body ng-view>
         

@@ -1,6 +1,6 @@
 //@TODO Form validation
 
-app.controller('RegisterController', ['$scope', '$route', '$location', 'UserService', function RegisterController($scope, $route, $location, UserService){
+app.controller('RegisterController', ['$scope', '$route', '$location', 'UserService', 'AuthService', function RegisterController($scope, $route, $location, UserService, AuthService){
 	$scope.name = "";
     $scope.surname = "";
     $scope.email = "";

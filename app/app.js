@@ -1,5 +1,5 @@
 
-var app = angular.module('TrendiApp', ['ngRoute', 'ngFileUpload']);
+var app = angular.module('TrendiApp', ['ngRoute', 'ngFileUpload', 'firebase']);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
     /*$locationProvider
