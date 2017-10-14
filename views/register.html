@@ -18,7 +18,25 @@
                                 <input class="form-control" id = "email" placeholder="E-mail" name="email" type="email" autofocus ng-model="email">
                             </div>
                             <div class="form-group">
+                           <select class="form-control" name="country">
+									<option value="">Country...</option>
+								 <option ng-repeat='d in Country' value="">{{d}}</option>
+								</div>
+							</select>
+							</div>
+
+							 <div class="form-group">
+							      <label for="About">Tell Us More About yourself:</label>
+							      <textarea class="form-control" rows="5" id="About"></textarea>
+							    </div>
+
+                            <div class="form-group">
                                 <input class="form-control" id = "password" placeholder="Password" name="password" type="password" value="" ng-model="password">
+                            </div>
+
+                             <div class="form-group">
+                               <!--<input class="form-control" id = "Confirm_Password" placeholder="Cornfirm Password" name="password" type="password" value="" ng-model="password"-->
+                                <input class="form-control" id ="Confirm_Password" type="password" placeholder="Confirm Password" required ng-model="Confirm_Password">
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <input type="submit" value = "Register" class="btn btn-block" />
@@ -32,3 +50,5 @@
 	    </div>
 	</div> 
 </div>
+
+
