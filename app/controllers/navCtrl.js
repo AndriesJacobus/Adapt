@@ -1,8 +1,3 @@
-/**
- * ToDo: Navbar Controller Definition
- * Author: K.M. Dinake
- * Date: 17 Dec 2016
- */
 
 app.controller('NavbarController', [
 '$scope', '$location', 'UserService', 
@@ -13,6 +8,7 @@ function NavbarController($scope, $location, UserService){
          { "title": "Logout", "link": "#/logout" }
      ];
 
+     /*
      $scope.main = function(){
           UserService.checkLogin(sessionStorage.getItem("userEmail")).then(
               function success(response){
@@ -28,5 +24,6 @@ function NavbarController($scope, $location, UserService){
          );
      };
      $scope.main();
+     */
 
  }]);
