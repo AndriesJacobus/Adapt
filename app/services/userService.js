@@ -19,11 +19,5 @@ app.factory('UserService', ['$http', function($http){
         return $http.post('/checkLogin', { userEmail: userEmail });
     };
 
-    userServiceObj.generateTrends = function(userEmail, datasetID, attributes, algorithmNum){
-        return $http.post('/generateTrends', { userEmail: userEmail, datasetID: datasetID, attributes: attributes, algorithmNum: algorithmNum });
-    };
-
-
-
     return userServiceObj;
 }]);
