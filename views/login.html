@@ -1,3 +1,4 @@
+<div id="fb-root"></div>
 <div class="container-fluid">
 	<div class="container registerLogin w3-animate-bottom" >
 		<div class="row">
@@ -18,6 +19,9 @@
 	                            <input type="submit" value = "Login" class="btn btn-block" />
 	                        
 	                    </form>
+                        <p></p>
+						<div class="fb-login-button " data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState();"></div>
+	                    <div class="switch">
 	                    <div class="switch">
 	                    	<a href="/#/register">Don't have an account?</a>
 	                    </div>
@@ -27,3 +31,53 @@
 	    </div>
 	</div> 
 </div>
+</div>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '209464939593623',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+    
+    function redirectOnConnected(response) {
+    console.log('redirectOnConnected');
+    console.log(response);
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      window.location.replace("/dashboard");
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      console.log("Not logged in")
+    }
+  }
+    
+      function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+        console.log("get login check state");
+      redirectOnConnected(response);
+    });
+  }
+    
+    FB.getLoginStatus(function(response) {
+    redirectOnConnected(response);
+    console.log("get login status");
+    });
+    
+    
+</script>
+
