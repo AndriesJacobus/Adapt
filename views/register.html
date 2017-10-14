@@ -15,12 +15,16 @@
                                 <input class="form-control" id = "uSurname" placeholder="Surname" name="uSurname" type="string" value="" ng-model="surname">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id = "email" placeholder="E-mail" name="email" type="email" autofocus ng-model="email">
+                                <input class="form-control" id = "email" placeholder="E-mail" name="email" type="email"  ng-model="email">
                             </div>
                             <div class="form-group">
                            <select class="form-control" name="country">
 									<option value="">Country...</option>
-								 <option ng-repeat='d in Country' value="">{{d}}</option>
+								 	<option ng-click = "setCountrySelected()" value="">india</option>
+								 	<option ng-click = "setCountrySelected()" value="">kenya</option>
+								 	<option ng-click = "setCountrySelected()" value="">mexico</option>
+								 	<option ng-click = "setCountrySelected()" value="">spain</option>
+								 	<option ng-click = "setCountrySelected()" value="">usa</option>
 								</div>
 							</select>
 							</div>

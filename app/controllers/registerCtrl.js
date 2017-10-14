@@ -7,9 +7,13 @@ app.controller('RegisterController', ['$scope', '$route', '$location', 'UserServ
     $scope.password = "";
     $scope.loginMessage = "Please Register";
     $scope.confirm_password = "";
-    $scope.Country = ["sa","usa"];
+    $scope.Country = india;
 
     
+    $scope.setCountrySelected = function(){
+        alert("phumlani");
+    }
+
     $scope.createNewUser = function(){
     	var newUser = {};
         newUser.name = $scope.name;
