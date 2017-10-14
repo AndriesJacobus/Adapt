@@ -21,12 +21,12 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
     
-    function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
+    function redirectOnConnected(response) {
+    console.log('redirectOnConnected');
     console.log(response);
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      window.location.replace("http://stackoverflow.com");
+      window.location.replace("/dashboard");
     } else {
       // The person is not logged into your app or we are unable to tell.
       console.log("Not logged in")
@@ -35,12 +35,14 @@
     
       function checkLoginState() {
     FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+        console.log("get login check state");
+      redirectOnConnected(response);
     });
   }
     
     FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
+    redirectOnConnected(response);
+    console.log("get login status");
     });
     
     
@@ -66,8 +68,8 @@
 	                            <input type="submit" value = "Login" class="btn btn-block" />
 	                        
 	                    </form>
-                        </br>
-						<div class="fb-login-button " data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                        <p></p>
+						<div class="fb-login-button " data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState();"></div>
 	                    <div class="switch">
 	                    <div class="switch">
 	                    	<a href="/#/register">Don't have an account?</a>
