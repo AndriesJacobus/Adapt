@@ -1,6 +1,6 @@
 var healthCareCourse = {
-    healthCare : "Health Care",
-    Careers: {
+    category : "Health Care",
+    careers: {
         nurse: "Nurse",
         pharmacist: "Pharmacist",
         healthWorker: "Health Care Worker"
@@ -8,17 +8,40 @@ var healthCareCourse = {
 }
 
 var foodAndBeverageCourse = {
-    foodAndBeverage : "Food and Beverage",
-    Careers: {
+    category : "Food and Beverage",
+    careers: {
         waiter: "Waiter",
         manager: "Manager",
         chef: "Chef"
     }
 }
 
-var india = [healthCareCourseCareers, foodAndBeverageCourseCareers];
+var sewingCourse = {
+    category : "Sewing",
+    careers : {
+        juniorSeamstress : "Junior Seamstress",
+        seniorSeamstress : "Senior Seamstress",
+        suitTailor : "Suit Tailor"
+    }
+}
 
-//for (int x, india.lentgth ){
-//    for (healthCareCourse.Careers.length)
-//}
-//     
+var salesCourse = {
+    category: "Sales",
+    careers: {
+        salesAssistant : "Sales Assistant",
+        salesManager : "Sales Manager"
+    }
+}
+
+var financialServicesCourse = {
+    category: "Financial Services",
+    careers: {
+        insuranceBroker : "Insurance Broker",
+        financialAdvisor : "Financial Advisor"
+    }
+}
+
+var india = [healthCareCourse, foodAndBeverageCourse];
+
+var kenya = [sewingCourse, salesCourse, financialServicesCourse];
+
