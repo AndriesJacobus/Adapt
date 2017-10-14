@@ -6,7 +6,10 @@ app.controller('RegisterController', ['$scope', '$route', '$location', 'UserServ
     $scope.email = "";
     $scope.password = "";
     $scope.loginMessage = "Please Register";
+    $scope.confirm_password = "";
+    $scope.Country = ["sa","usa"];
 
+    
     $scope.createNewUser = function(){
     	var newUser = {};
         newUser.name = $scope.name;
@@ -39,7 +42,8 @@ app.controller('RegisterController', ['$scope', '$route', '$location', 'UserServ
     }
 
     $scope.submit = function(){
-        if($scope.name == "" || $scope.surname == "" || $scope.email == "" || $scope.password == ""){ return false; }
-        $scope.createNewUser();
+        
+
+        alert($scope.password);
     };
 }]);
