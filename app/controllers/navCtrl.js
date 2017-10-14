@@ -5,6 +5,7 @@ function NavbarController($scope, $location, UserService){
      /* Main Navbar */
      $scope.menuItems = [
          { "title": "Dashboard", "link":"#/dashboard" },
+         { "title": "Job Matching", "link":"#/jobmatch" },
          { "title": "Logout", "link": "#/logout" }
      ];
 

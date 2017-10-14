@@ -23,5 +23,9 @@ app.factory('UserService', ['$http', function($http){
         return $http.post('/getMatchedJobs', { userEmail: userEmail });
     };
 
+    userServiceObj.getCurrentUserType = function(userEmail){
+        return $http.post('/getCurrentUserType', { userEmail: userEmail });
+    };
+
     return userServiceObj;
 }]);
