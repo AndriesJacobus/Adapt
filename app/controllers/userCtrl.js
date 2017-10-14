@@ -134,50 +134,6 @@ app.controller('UserController', [
         );
     };
 
-    $scope.removeDataset = function (datasetName, dataSetID){
-        DataService.removeDataset(dataSetID, $scope.userEmail).then(
-            function success(res){
-                if (res.status == 200 && JSON.parse(res.data[0]).result == "success"){
-                    $scope.getDatasets();
-                } else {
-                    console.log(res.data);
-                    var msg = "Ooops! Well this is embarrassing. ";
-                    msg += "Something went wrong trying to delete ";
-                    msg += "the following dataset: " + datasetName;
-                    msg += ". Please try again later.";
-                    var code = 400;
-                    $location.url('/error?errCode=' + code + '&errText=' + msg);
-                    return false;
-                }
-            },
-            function failure(res){
-                console.log(res.data);
-                var msg = "Ooops! Well this is embarrassing. ";
-                msg += "Something went wrong trying to delete ";
-                msg += "the following dataset: " + datasetName;
-                msg += ". Please try again later.";
-                var code = res.status;
-                $location.url('/error?errCode=' + code + '&errText=' + msg);
-                return false;
-            }
-        );
-    };
-
-    $scope.deleteDataset = function(datasetName, datasetID){
-        if (datasetName == "" || datasetName == null) return;
-        if ($scope.isSafeToRemove(datasetName, datasetID) == false){
-            var msg = "Ooops! Well this is embarrassing. ";
-            msg += "Something went wrong trying to delete ";
-            msg += "the following dataset: " + datasetName;
-            msg += ". Please try again later.";
-            var code = 400;
-            $location.url('/error?errCode=' + code + '&errText=' + msg);
-            return;
-        }
-        $scope.removeDataset(datasetName, datasetID);
-        return;
-    };
-
     $scope.getUserName = function(userEmail){
         if ($scope.userEmail != userEmail) {
             $location.url('/logout');
@@ -261,7 +217,6 @@ app.controller('UserController', [
         $scope.changeDatasetListStatus();
     }
 
-
     $scope.setDataToolsSelectedAlgo = function(algorithm){
         $scope.dataToolsSelctedAlgorithm = algorithm;
         $scope.algorithmMessage = algorithm.algorithmName + '.';
@@ -292,72 +247,10 @@ app.controller('UserController', [
         $scope.getDatasets();
     }
 
-    if ($location.path() == "/data_tools"){
-        $scope.getDatasets();
-        $scope.getAlgorithms();
-    }
-
     /* 
     //============================== Extra angular examples ==============================//
-    $scope.changeAccessMod = function(datasetID, access_mod){
-        if (datasetID == "" || datasetID == null || access_mod == null) return;
-        if (access_mod == "private") access_mod = "public";
-        else if (access_mod == "public") access_mod = "private";
-        else return;
-        DataService.changeDatasetAccessMod(datasetID, access_mod).then(
-            function success(res){
-                if (res.status == 200 && res.data != undefined && res.data != null && JSON.parse(res.data).result != "failed"){
-                    // alert the user that the change succeeded
-                    $scope.getDatasets();
-                } else {
-                    console.log(res.data);
-                    var msg = "Ooops! Well this is embarrassing. ";
-                    msg += "Something went wrong trying to share your dataset. ";
-                    msg += "Please try again later.";
-                    var code = 400;
-                    $location.url('/error?errCode=' + code + '&errText=' + msg);
-                    return;
-                }
-            },
-            function failure(res){
-                console.log(res.data);
-                var msg = "Ooops! Well this is embarrassing. ";
-                msg += "Something went wrong trying to share your dataset. ";
-                msg += "Please try again later.";
-                var code = res.status;
-                $location.url('/error?errCode=' + code + '&errText=' + msg);
-                return false;
-            }
-        );
-    };
 
-    $scope.getStats = function(dataSetID){
-        $scope.showingStats = true;
-
-        DataService.getStats(dataSetID).then(
-            function success(res){
-                console.log('Successfully retrieved stats for ' + dataSetID);
-                console.log(res.data);
-
-                var temp = [];
-                temp = res.data;
-
-                for (var i = 0; 1 < temp.length; i++)
-                {
-                    var index = $scope.selectedAttributes.indexOf(temp[i].column_name);
-                    if ( index !== -1 && index === $scope.selectedAttributes.length - 1)
-                    {
-                        $scope.returnedStats.push(temp[i]);
-                    }
-                }
-            },
-            function err(res){
-                console.log('Failed to retrieve stats for ' + dataSetID);
-            }
-        );
-    };
-
-    //==============================ChartJS for Stats page==============================//
+    //============================== ChartJS ==============================//
 
     $scope.loadGraph = function(Attribute){
         //bar chart data

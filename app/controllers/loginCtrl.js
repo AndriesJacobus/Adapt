@@ -5,8 +5,6 @@ app.controller('LoginController', ['$scope', '$rootScope', '$route', '$location'
 
 		$scope.writeToSessionStorage = function(email){
 			window.sessionStorage.setItem("userEmail", email);
-			window.sessionStorage.setItem("schemaPath", '');
-			window.sessionStorage.setItem("dataPath", '');
 		};
 
 		$scope.executeLogin = function(){
