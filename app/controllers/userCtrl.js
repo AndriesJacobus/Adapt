@@ -182,7 +182,7 @@ app.controller('UserController', [
     };
 
     /* Data tools page */
-    $scope.attributeListStatus = "listClosed";]
+    $scope.attributeListStatus = "listClosed";
     $scope.datasetListStatus = "listClosed";
     $scope.algorithmListStatus = "listClosed";
 
