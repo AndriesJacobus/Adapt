@@ -11,7 +11,19 @@ var allCareers = {
     salesAssistant : "Sales Assistant",
     salesManager : "Sales Manager",
     insuranceBroker : "Insurance Broker",
-    financialAdvisor : "Financial Advisor"
+    financialAdvisor : "Financial Advisor",
+    javaBackEndDeveloper : "Java Back-End Developer",
+    ProgramaFrontEnd : "Programa Front-end",
+    DigitalMarketingAndBinding : "Digital Marketing and Branding",
+    ITManager: "IT Manager",
+    InformationSecurityAnalyst : "Information Security Analyst",
+    RetailCareerAdvancement : "Retail Career Advancement",
+    Carpenter:"Carpenter",
+    Plumbers : "Plumbers",
+    Pipefitters : "Pipefitters", 
+    Steamfitters : "Steamfitters",
+    MarketingConsultant:"Marketing Consultant"
+
 };
 
 var healthCareCourse = {
@@ -28,7 +40,8 @@ var foodAndBeverageCourse = {
     careers: [
         allCareers.waiter,
         allCareers.manager,
-        allCareers.chef
+        allCareers.chef,
+        allCareers.RetailCareerAdvancement
     ]
 }
 
@@ -57,6 +70,39 @@ var financialServicesCourse = {
     ]
 }
 
+var TechnologyCourse = {
+        category: "Technology Course",
+        careers: [
+            allCareers.javaBackEndDeveloper,
+            allCareers.ProgramaFrontEnd,
+            allCareers.InformationSecurityAnalyst
+        ]
+}
+
+var MarketingCourse = {
+    category: "Marketing",
+    careers: [
+        allCareers.DigitalMarketingAndBinding,
+        allCareers.MarketingConsultant
+    ]
+}
+
+var constructionindustry = {
+    category : "Craft Professions",
+    careers : [
+        allCareers.Carpenter,
+        allCareers.Pipefitters,
+        allCareers.Steamfitters
+
+    ]
+}
+
 var india = [healthCareCourse, foodAndBeverageCourse];
 
 var kenya = [sewingCourse, salesCourse, financialServicesCourse];
+
+var mexico = [financialServicesCourse,salesCourse,TechnologyCourse];
+
+var spain = [TechnologyCourse,MarketingCourse];
+
+var usa = [healthCareCourse,foodAndBeverageCourse,constructionindustry,TechnologyCourse];

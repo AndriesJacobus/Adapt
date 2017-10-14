@@ -28,14 +28,26 @@ app.controller('RegisterController', ['$scope', '$route', '$location', 'UserServ
             $scope.arr = ['category...','Sewing','Sales','Financial Services'];           
         //alert(s);
     }else if( $scope.Country == 'mexico'){
-            $scope.arr = ['category...'];            
+            $scope.arr = ['category...','Sewing','Sales','Financial Services'];            
         //alert(s);
     }else if( $scope.Country == 'spain'){
-            $scope.arr = ['category...'];            
+            $scope.arr = ['category...','Technology Course','Marketing','Financial Services'];            
         //alert(s);
     }else if( $scope.Country == 'usa'){
-            $scope.arr = ['category...'];            
+            $scope.arr = ['category...','Technology Course','construction industry','Health Care'];            
         //alert(s);
+    }
+    $scope.setCategorySelected = function(){
+        $scope.Country = $('#selectCountry').find(":selected").text(); 
+        /*if( $scope.Country == 'Country...'){
+            $scope.CountrySelected = false;
+        }else{
+            $scope.CountrySelected = true;            
+        //alert(s);*/
+        /
+
+        //store in a session
+        console.log("he");
     }
 
    /* if( $scope.Country == 'india'){
