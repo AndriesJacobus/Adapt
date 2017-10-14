@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<div class="container registerLogin w3-animate-bottom" style = "margin-top: 30vh;">
+	<div class="container registerLogin w3-animate-bottom">
 		<div class="row">
 	        <div class="col-md-4 col-md-offset-4">
 	            <div class="login-panel panel panel-default w3-card-4">
@@ -8,23 +8,40 @@
 	                </div>
 	                <div class="panel-body">
 	                    <form name="frmRegister" ng-submit="submit()">
-                            <div class="form-group">
+                            <!--div class="form-group">
                                 <input class="form-control" id = "uName" placeholder="Name" name="uName" type="string" value="" ng-model="name">
+                            </div-->
+                             <div class="group">      
+							      <input id = "uName" type="text" required placeholder="Name" name="uName" ng-model="uName">
+							      <span class="highlight"></span>
+							      <span class="bar"></span>
+							    </div>
+							     <div class="group">      
+							      <input id = "uSurname" type="text" required placeholder="Surname" name="uSurname" ng-mode ="surname" >
+							      <span class="highlight"></span>
+							      <span class="bar"></span>
+							    </div>
+                            <div class="form-group">
+                                <input class="form-control" id = "email" placeholder="E-mail" name="email" type="email"  ng-model="email">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id = "uSurname" placeholder="Surname" name="uSurname" type="string" value="" ng-model="surname">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" id = "email" placeholder="E-mail" name="email" type="email" autofocus ng-model="email">
-                            </div>
-                            <div class="form-group">
-                           <select class="form-control" name="country">
+                           <select class="browser-default" ng-click ="setCountrySelected()" id="selectCountry" class="form-control" name="country">
 									<option value="">Country...</option>
-								 <option ng-repeat='d in Country' value="">{{d}}</option>
-								</div>
+								 	<option  value="">india</option>
+								 	<option  value="">kenya</option>
+								 	<option  value="">mexico</option>
+								 	<option  value="">spain</option>
+								 	<option  value="">usa</option>
 							</select>
+
 							</div>
 
+							<div class="form-group" ng-if="isCountrySelected()">
+                           	<select  id="selectCountr" class="form-control" name="country">
+								<option ng-repeat="i in arr"> {{i}} </option>
+							</select>
+							
+							</div>
 							 <div class="form-group">
 							      <label for="About">Tell Us More About yourself:</label>
 							      <textarea class="form-control" rows="5" id="About"></textarea>
