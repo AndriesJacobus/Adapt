@@ -1,3 +1,4 @@
+
 app.controller('NavbarController', [
 '$scope', '$location', 'UserService', 
 function NavbarController($scope, $location, UserService){
@@ -7,6 +8,7 @@ function NavbarController($scope, $location, UserService){
          { "title": "Logout", "link": "#/logout" }
      ];
 
+     /*
      $scope.main = function(){
           UserService.checkLogin(sessionStorage.getItem("userEmail")).then(
               function success(response){
@@ -22,5 +24,6 @@ function NavbarController($scope, $location, UserService){
          );
      };
      $scope.main();
+     */
 
  }]);

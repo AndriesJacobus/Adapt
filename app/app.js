@@ -1,8 +1,3 @@
-/*
-* ToDo: Main App Component Definition for Trendi Big Data Platform
-* Author: K.M. Dinake
-* Date: 6 October 2017
-*/
 
 var app = angular.module('TrendiApp', ['ngRoute', 'ngFileUpload']);
 
