@@ -1,0 +1,144 @@
+<div class="container-fluid">
+    <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/generation-nav.html'"></nav>
+    <div class="row">
+        <div class="col-md-3 blue-grey darken-3 " style="height:100vh; color:white">
+            <div style="margin:20px;">
+                <h3 class=".center-align" style="padding-top:100px;">Operations Portal</h3>
+                <p class=".center-align">Filter Users On</p>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Actively Searching</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Employed</label>
+                </div>
+                <div class="checkbox disabled">
+                  <label><input type="checkbox" value="" disabled>Studying</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 blue-grey lighten-5" style="height:100vh;">
+            <center>
+                <div style="padding-top:100px;">
+                    <div class="tab" >
+                      <button class="tablinks" onclick="changeTab(event, 'Tasks')">TASKS</button>
+                      <button class="tablinks" onclick="changeTab(event, 'Users')">USERS</button>
+                      <button class="tablinks" onclick="changeTab(event, 'Analytics')">ANALYTICS</button>
+                    </div>
+
+                    <div id="Tasks" class="tabcontent">
+                        <div class="card horizontal">
+                          <div class="card-stacked">
+                            <div class="card-content">
+                              <h5>Stephanie needs to be contacted!</h5>
+                                <p>It has been 30 days and she has not attained a job</p>
+                            </div>
+                            <div class="card-action">
+                              <a href="#">Message</a>
+                            <a href="#">Call</a>
+                            </div>
+                          </div>
+                        </div>
+                    
+                    
+                    <div id="Tasks" class="tabcontent">
+                        <div class="card horizontal">
+                          <div class="card-stacked">
+                            <div class="card-content">
+                              <h5>Marks profile needs to be reviewed</h5>
+                                <p>His profile has been completed and is ready for review</p>
+                            </div>
+                            <div class="card-action">
+                              <a href="#">Message</a>
+                            <a href="#">Call</a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    
+                        <div id="Tasks" class="tabcontent">
+                        <div class="card horizontal">
+                          <div class="card-stacked">
+                            <div class="card-content">
+                              <h5>Mark needs a congratulations call</h5>
+                                <p>Mark has found a job and needs to be called</p>
+                            </div>
+                            <div class="card-action">
+                            <a href="#">Call</a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+
+                    <div id="Users" class="tabcontent">
+                        <div class="card horizontal">
+                          <div class="card-image">
+                            <img src="../img/stephanie.png">
+                          </div>
+                          <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Stefanie Astu-dent</h5>
+                              <p>Michigan, USA</p>
+                                <p>Status: <span style="border:red 1px solid" class="red lighten-4">Unemployed</span><small> for 30 days</small></p>
+                            </div>
+                            <div class="card-action">
+                              <a href="#">View Profile</a>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="card horizontal">
+                          <div class="card-image">
+                            <img src="../img/mark.png">
+                          </div>
+                          <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Mark Zuckerberg</h5>
+                              <p>Silicon Valley, South Africa</p>
+                                <p>Status: <span style="border:blue 1px solid" class="light-blue lighten-2">Employed</span><small> at Facebook for 93 days</small></p>
+                            </div>
+                            <div class="card-action">
+                              <a href="#">View Profile</a>
+                            </div>
+                          </div>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    <div id="Analytics" class="tabcontent">
+                      <h3>Facebook Analytics</h3>
+                        <img src="../img/facebookanalytics.png" alt="fb analytics" style="width:100%">
+                      <p>This is an image</p> 
+                    </div>
+                </div>
+            </center>
+        </div>
+	</div> 
+</div>
+
+<script>
+function changeTab(evt, tabbed) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    document.getElementById("Tasks").style.display = "none";
+    
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabbed).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
