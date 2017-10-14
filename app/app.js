@@ -1,5 +1,5 @@
 
-var app = angular.module('TrendiApp', ['ngRoute', 'ngFileUpload', 'firebase']);
+var app = angular.module('TrendiApp', ['ngRoute', 'ngFileUpload']);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
     /*$locationProvider
@@ -52,6 +52,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         })
         .when('/explore', {
             templateUrl: 'views/explore.html',
+            controller: 'UserController'
+        })
+        .when('/jobmatch', {
+            templateUrl: 'views/jobmatch.html',
             controller: 'UserController'
         })
         .when('/error', {
