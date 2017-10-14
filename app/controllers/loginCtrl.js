@@ -12,6 +12,8 @@ app.controller('LoginController', ['$scope', '$rootScope', '$route', '$location'
 			user.email = $scope.email;
 			user.password = $scope.password;
 
+			console.log("Here, user: " + user.email + ", pass: " + user.password);
+
 			UserService.login(user).then(
 				function success(response){
 		            if(response && response.status == 200 && response.data == "success"){

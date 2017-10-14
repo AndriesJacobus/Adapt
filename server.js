@@ -36,6 +36,7 @@ app.post('/registerNewUser', function (req, res) {
 });
 
 //Execute login
+//NOTE: Hard coded to login regardless FOR NOW
 app.post('/executeLogin', function (req, res) {
 
 	//{\"email\":\"jason@gmail.com\",\"password\":\"test_pass\"}
@@ -43,12 +44,13 @@ app.post('/executeLogin', function (req, res) {
 	console.log("Login req received. Email: " + req.body.user.email);
 
 	// Set the session verification
-	req.session.userEmail = req.body.user.email;
+	res.write("success");
+	res.end();
 });
 
-app.post('/executeLogout', function(req, res){
+app.post('/executeLogout', function(req, res) {
 	//Clear the node session
-	req.session.destroy(function(err){
+	req.session.destroy(function(err) {
 		if(err){
 			res.write("failed");
 			res.end();
@@ -61,6 +63,20 @@ app.post('/executeLogout', function(req, res){
 
 //New queries - User Service
 
-app.post('/getUserFullName', function (req,res){
+app.post('/getUserFullName', function (req,res) {
 	console.log("Get user full name req received. Email: " + req.body.userEmail);
+});
+
+//Execute login
+app.post('/checkLogin', function (req, res) {
+	console.log("Check login req received. Email: " + req.body.user.email);
+
+	res.setHeader('Content-Type', 'application/json');
+	if(req.body.userEmail != req.session.userEmail || results.result == "false"){
+		res.write(JSON.stringify({ result: "false"}));		
+	} else {
+		res.write(JSON.stringify({ result: "true"}));		
+	}
+
+	res.end();
 });
