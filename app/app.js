@@ -54,6 +54,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: 'views/explore.html',
             controller: 'UserController'
         })
+        .when('/jobmatch', {
+            templateUrl: 'views/jobmatch.html',
+            controller: 'UserController'
+        })
         .when('/error', {
             templateUrl: 'views/err.html',
             controller: 'ErrController'
