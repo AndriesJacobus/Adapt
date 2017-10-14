@@ -1,9 +1,3 @@
-/**
- * ToDo: Navbar Controller Definition
- * Author: K.M. Dinake
- * Date: 17 Dec 2016
- */
-
 app.controller('NavbarController', [
 '$scope', '$location', 'UserService', 
 function NavbarController($scope, $location, UserService){
