@@ -1,8 +1,9 @@
 <div class="container-fluid">
     <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
+    
     <div class="dashboard w3-animate-top">
-        <h2 style = "text-align: center;">Available jobs</h2>
-        <h6 style = "text-align: center;"><i>Matched according to your skillset</i></h6>
+        <h2 style = "text-align: center;">Job Match</h2>
+        <h6 style = "text-align: center;"><i>Swipe Left to Accept or Left to Decline</i></h6>
         <center>
             <div class="grid">
 
@@ -17,13 +18,15 @@
                         <br/>
                         <span><b>Description:</b><br/> {{j.desc}}</span>
                     </div>
+                    
                 </div>
                 
+            </div>
+            <div class="card-action">
+                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
             </div>
         </center>
 
         <div class="additionalInfo">
-            <!-- Add some content for the dashboard -->
-        </div>
-    </div>
+
 </div>

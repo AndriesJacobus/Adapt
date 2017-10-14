@@ -20,13 +20,13 @@ app.controller('UserController', [
     $scope.datasetMessage = "dataset";
 
     /* Jobs */
-    var names = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach"];
-    var companies = ["DevTec", "MERC", "JSE", "BMW", "Facebook", "RSA"];
-    var pays = ["R20 000pm", "R10 000pm", "R15 000pm", "R5 000pm", "R1pm", "R500 000pm"];
-    var descriptions = ["Develop web stuff", "Sell general", "Sell stocks", "Sell cars", "Develop apps", "Teach hochey"];
+    var names = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach", "Car Salesman", "Mobile Dev", "Hockey Coach"];
+    var companies = ["DevTec", "MERC", "JSE", "BMW", "Facebook", "RSA", "BMW", "Facebook", "RSA"];
+    var pays = ["R20 000pm", "R10 000pm", "R15 000pm", "R5 000pm", "R1pm", "R500 000pm", "R5 000pm", "R1pm", "R500 000pm"];
+    var descriptions = ["Develop web stuff", "Sell general", "Sell stocks", "Sell cars", "Develop apps", "Teach hochey", "Sell cars", "Develop apps", "Teach hochey"];
 
     $scope.jobs = [];
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < names.length; i++) {
         $scope.jobs.push({
             name: names[i],
             company: companies[i],
