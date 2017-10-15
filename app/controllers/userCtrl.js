@@ -27,6 +27,7 @@ app.controller('UserController', [
     var descriptions = ["Develop web stuff", "Sell general", "Sell stocks", "Sell cars", "Develop apps", "Teach hochey", "Sell cars", "Develop apps", "Teach hochey"];
 
     $scope.jobs = publisJobs;
+    $scope.activeUndo = publisactiveU;
     $scope.undoJobs = [];
 
     if ($scope.jobs.length == 0)
@@ -43,6 +44,16 @@ app.controller('UserController', [
         publisJobs = $scope.jobs;
     }
 
+    if ($scope.activeUndo.length != 0)
+    {
+        for (var i = 0; i < $scope.activeUndo.length; i++) {
+
+            $scope.jobs.unshift( $scope.activeUndo[i] );
+        }
+        publisactiveU = [];
+        $scope.activeUndo = publisactiveU;
+    }
+
     $scope.removeFromJobs = function(Job) {
         for (var i = 0; i < $scope.jobs.length; i++)
         {
@@ -53,6 +64,19 @@ app.controller('UserController', [
                 break;
             }
         }
+    }
+
+    $scope.activeRemoveFromJobs = function(Job) {
+        for (var i = 0; i < $scope.jobs.length; i++)
+        {
+            if ($scope.jobs[i].name == Job.name)
+            {
+                $scope.activeUndo.push($scope.jobs[i]);
+                $scope.jobs.splice(i, 1);
+                break;
+            }
+        }
+        publisactiveU = $scope.activeUndo;
     }
 
     $scope.undoRemove = function() {

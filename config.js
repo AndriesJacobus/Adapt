@@ -108,6 +108,7 @@ var spain = [TechnologyCourse,MarketingCourse];
 var usa = [healthCareCourse,foodAndBeverageCourse,constructionindustry,TechnologyCourse];
 
 var publisJobs = [];
+var publisactiveU = [];
 var publisCand = [];
 
 var loginBypassType = "";
