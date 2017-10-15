@@ -6,7 +6,8 @@ function NavbarController($scope, $location, UserService){
      $scope.menuItems = [
          { "title": "Dashboard", "link":"#/dashboard" },
          { "title": "Job Matching", "link":"#/jobmatch" },
-         { "title": "Logout", "link": "#/logout" }
+         { "title": "Help", "link":"https://www.messenger.com/t/AdaptRecruitmentSoftware" },
+         { "title": "Logout", "link": "#/logout" }  
      ];
 
      /*
