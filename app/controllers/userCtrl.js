@@ -95,8 +95,15 @@ app.controller('UserController', [
     }
 
     /* User Views */
-    //$scope.currentUserType = "jobSeeker";
-    $scope.currentUserType = "jobProvider";
+    if (loginBypassType == 's')
+    {
+        $scope.currentUserType = "jobSeeker";
+    }
+    else
+    {
+        $scope.currentUserType = "jobProvider";
+    }
+    
     var candidates = ["Jack A", "Jill B", "Bob B", "Bill E", "Litho P", "Thabo F", "Jack G", "Lily B", "Jeff R", "Ken M"];
     var profiles = ["img/Candidates/1.jpg", "img/Candidates/2.jpg", "img/Candidates/3.jpg", "img/Candidates/4.jpg", "img/Candidates/5.jpg", "img/Candidates/6.jpg", "img/Candidates/7.jpg", "img/Candidates/8.jpg", "img/Candidates/9.jpg", "img/Candidates/10.jpg"];
     var address = ["123 West Street, Sandton", "55 Jack Street, Johannesburg", "12 Moore Ave, Centurion", "1 Lane Road, Pretoria", "25 Jakcosn Str, Cape Town", "33 Job Lane, Pretoria", "45 River Street, Cape Town", "10 July Ave, Sandton", "1 Mark Road, Midrand", "33 Pollok Street, Johannesburg"];

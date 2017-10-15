@@ -16,11 +16,21 @@
                                 <input class="form-control" id="password" placeholder="Password" name="password" type="password" value="" ng-model="password">
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
-                            <input type="submit" value="Login" class="btn btn-block" />
+                            <input type="submit" value="Job Seeker Login" class="btn btn-block" />
+                            <input type="submit" value="Job Provider Login" class="btn btn-block" />
 
                         </form>
-                        <p></p>
-                        <div class="fb-login-button " data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState();"></div>
+                        <br/>
+                        <p><u>Or Login With Facebook as</u></p>
+                        <p>Job Seeker:</p>
+
+                        <div class="fb-login-button " data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState('s');"></div>
+
+                        <br/>
+                        <br/>
+                        <p>Job Provider:</p>
+
+                        <div class="fb-login-button " data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState('p');"></div>
                         <div class="switch">
                             <a href="/#/register">Don't have an account?</a>
                         </div>
@@ -72,7 +82,9 @@
         }
     }
 
-    function checkLoginState() {
+    function checkLoginState(profileType) {
+        loginBypassType = profileType;
+
         setTimeout(reload, 1000);
 
         FB.getLoginStatus(function(response) {

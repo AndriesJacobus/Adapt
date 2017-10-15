@@ -109,3 +109,5 @@ var usa = [healthCareCourse,foodAndBeverageCourse,constructionindustry,Technolog
 
 var publisJobs = [];
 var publisCand = [];
+
+var loginBypassType = "";
