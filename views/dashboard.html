@@ -8,7 +8,7 @@
             <h6 style = "text-align: center;"><i>Matched according to your skillset</i></h6>
             <center>
                 <div class="grid">
-                    <div class="item w3-card-4" ng-click="goRouteTo('/jobmatching');" ng-repeat = "j in jobs">
+                    <div class="item w3-card-4" ng-repeat = "j in jobs" ng-click="prioritizeJob(j)">
                         <div class="caption">
                             <span>{{j.name}}</span>
                         </div>
@@ -32,18 +32,18 @@
             <h6 style = "text-align: center;"><i>Matched according to your job criteria</i></h6>
             <center>
                 <div class="grid">
-                    <div class="item w3-card-4" ng-click="goRouteTo('/jobmatching');" ng-repeat = "w in workers">
+                    <div class="item w3-card-4" ng-repeat = "w in workers" ng-click="prioritizeCand(w)">
                         <div class="caption">
                             <span>{{w.candidate}}</span>
                         </div>
-                            <div class="icon" style = "background: #3498db; color: white; text-align: left;">
-                                <center>
-                                    <img src="{{w.profile}}" style = "height: 10vh; max-height: 10vh; width: auto;" />
-                                </center>
-                                <br/>
-                                <span><b>Job:</b><br/> {{w.jobApply}}</span>
-                                <br/>
-                            </div>
+                        <div class="icon" style = "background: #3498db; color: white; text-align: left;">
+                            <center>
+                                <img src="{{w.profile}}" style = "height: 10vh; max-height: 10vh; width: auto;" />
+                            </center>
+                            <br/>
+                            <span><b>Job:</b><br/> {{w.jobApply}}</span>
+                            <br/>
+                        </div>
                     </div>
                     <br/>
                     <br/>

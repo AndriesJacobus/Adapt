@@ -123,7 +123,7 @@ app.controller('UserController', [
     $scope.removeFromCand = function(Cand) {
         for (var i = 0; i < $scope.workers.length; i++)
         {
-            if ($scope.workers[i].name == Cand.name)
+            if ($scope.workers[i].candidate == Cand.candidate)
             {
                 $scope.undoCand.push($scope.workers[i]);
                 $scope.workers.splice(i, 1);
@@ -139,6 +139,38 @@ app.controller('UserController', [
             $scope.undoCand.splice($scope.undoCand.length - 1, 1);
         }
     }
+
+    $scope.prioritizeJob = function(Job) {
+        for (var i = 0; i < $scope.jobs.length; i++)
+        {
+            if ($scope.jobs[i].name == Job.name)
+            {
+                var element = $scope.jobs[i];
+                $scope.jobs.splice(i, 1);
+                $scope.jobs.splice(0, 0, element);
+                break;
+            }
+        }
+        publisJobs = $scope.jobs;
+        $scope.goRouteTo('/jobmatch');
+    }
+
+    $scope.prioritizeCand = function(Cand) {
+        for (var i = 0; i < $scope.workers.length; i++)
+        {
+            if ($scope.workers[i].candidate == Cand.candidate)
+            {
+                var element = $scope.workers[i];
+                $scope.workers.splice(i, 1);
+                $scope.workers.splice(0, 0, element);
+                break;
+            }
+        }
+        publisCand = $scope.workers;
+        $scope.goRouteTo('/jobmatch');
+    }
+
+    /* Other */
 
     $scope.setcurrentUserType = function (id) {
         if ($scope.userEmail == "")
