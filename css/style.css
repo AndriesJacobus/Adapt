@@ -787,3 +787,30 @@ ul.nav.navbar-nav a:hover {
     margin-top: 90vh;
     position: relative;
 }
+
+.swiperCard {
+    height: 70vh;
+    width: 70vw;
+    background-color: #2980b9;
+}
+
+.title {
+    margin-top: 10px;
+    height: 20%;
+    color: white;
+}
+
+.banner {
+    height: 30%;
+}
+
+.info {
+    height: 40%;
+    color: white;
+}
+
+.buttons {
+    height: 10%;
+    display: inline-block;
+    text-align: center;
+}

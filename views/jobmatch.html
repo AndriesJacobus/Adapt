@@ -1,32 +1,61 @@
-<div class="container-fluid">
+<div class="container-fluid" style = "overflow-y: hidden;">
     <nav class="w3-card-2 navbar navbar-default navbar-fixed-top" ng-include="'views/nav.html'"></nav>
     
-    <div class="dashboard w3-animate-top">
-        <h2 style = "text-align: center;">Job Match</h2>
-        <h6 style = "text-align: center;"><i>Swipe Left to Accept or Left to Decline</i></h6>
-        <center>
-            <div class="grid">
-
-                <div class="item w3-card-4" ng-click="goRouteTo('/my_datasets');" ng-repeat = "j in jobs">
-                    <div class="caption">
-                        <span>{{j.name}}</span>
-                    </div>
-                    <div class="icon" style = "background: #3498db; color: white; text-align: left;">
-                        <span><b>Company:</b><br/> {{j.company}}</span>
+    <div ng-if = "currentUserType == 'jobSeeker'">
+        <div class="dashboard w3-animate-top" ng-repeat = "j in jobs" >
+            <h2 style = "text-align: center;">Job Match</h2>
+            <h6 style = "text-align: center;"><i>Swipe Left to Accept or Left to Decline</i></h6>
+            <center>
+                <div class = "swiperCard">
+                    <div class = "title">
                         <br/>
-                        <span><b>Pay:</b><br/> {{j.pay}}</span>
-                        <br/>
-                        <span><b>Description:</b><br/> {{j.desc}}</span>
+                        <h5>{{j.name}}</h5>
                     </div>
-                    
+                    <div class = "banner">
+                        <img src="{{j.logo}}" style = "height: 100%; width: auto;" />
+                    </div>
+                    <div class = "info">
+                        <br/>
+                        <span>Company: {{j.company}}</span>
+                        <br/>
+                        <br/>
+                        <span>Salary: {{j.pay}}</span>
+                        <br/>
+                        <br/>
+                        <span>Description: {{j.desc}}</span>
+                    </div>
+                    <div class = "buttons">
+                        <a class="btn" style = "background-color: #D52D2D;" ng-click = "removeFromJobs(j)"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                        <a class="btn" style = "background-color: #ffa500;" ng-click = "undoRemove()"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                        <a class="btn" style = "background-color: #3B5998;" ng-click = ""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-                
-            </div>
-            <div class="card-action">
-                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-            </div>
-        </center>
+            </center>
+        </div>
+    </div>
 
-        <div class="additionalInfo">
+    <div ng-if = "currentUserType == 'jobProvider'">
+        <div class="dashboard w3-animate-top" ng-repeat = "j in jobs" >
+            <h2 style = "text-align: center;">Job Match</h2>
+            <h6 style = "text-align: center;"><i>Swipe Left to Accept or Left to Decline</i></h6>
+            <center>
+                <div class = "swiperCard">
+                    <div class = "title">
+                        <br/>
+                        <h5>{{j.name}}</h5>
+                    </div>
+                    <div class = "banner">
+                        <img src="{{j.logo}}" style = "height: 100%; width: auto;" />
+                    </div>
+                    <div class = "info">
+                    
+                    </div>
+                    <div class = "buttons">
+                    
+                    </div>
+                </div>
+            </center>
+        </div>
+    </div>
 
 </div>

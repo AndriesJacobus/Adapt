@@ -44,7 +44,6 @@ app.controller('RegisterController', ['$scope', '$route', '$location', 'UserServ
         }else{
             $scope.CountrySelected = true;            
         //alert(s);*/
-        /
 
         //store in a session
         console.log("he");

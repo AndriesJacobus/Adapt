@@ -38,22 +38,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: 'views/dashboard.html',
             controller: 'UserController'
         })
-        .when('/my_datasets', {
-            templateUrl: 'views/my-datasets.html',
-            controller: 'UserController'
-        })
-        .when('/data_tools', {
-            templateUrl: 'views/data-tools.html',
-            controller: 'UserController'
-        })
-        .when('/statistics', {
-            templateUrl: 'views/statistics.html',
-            controller: 'UserController'
-        })
-        .when('/explore', {
-            templateUrl: 'views/explore.html',
-            controller: 'UserController'
-        })
         .when('/jobmatch', {
             templateUrl: 'views/jobmatch.html',
             controller: 'UserController'

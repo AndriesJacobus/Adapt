@@ -22,17 +22,46 @@ app.controller('UserController', [
     /* Jobs */
     var names = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach", "Car Salesman", "Mobile Dev", "Hockey Coach"];
     var companies = ["DevTec", "MERC", "JSE", "BMW", "Facebook", "RSA", "BMW", "Facebook", "RSA"];
+    var logos = ["img/1.jpeg", "img/2.jpeg", "img/3.jpeg", "img/4.jpeg", "img/5.jpeg", "img/6.jpeg", "img/7.jpeg", "img/8.jpeg", "img/9.jpeg"];
     var pays = ["R20 000pm", "R10 000pm", "R15 000pm", "R5 000pm", "R1pm", "R500 000pm", "R5 000pm", "R1pm", "R500 000pm"];
     var descriptions = ["Develop web stuff", "Sell general", "Sell stocks", "Sell cars", "Develop apps", "Teach hochey", "Sell cars", "Develop apps", "Teach hochey"];
 
-    $scope.jobs = [];
-    for (var i = 0; i < names.length; i++) {
-        $scope.jobs.push({
-            name: names[i],
-            company: companies[i],
-            pay: pays[i],
-            desc: descriptions[i]
-        });
+    $scope.jobs = publisJobs;
+    $scope.undoJobs = [];
+
+    if ($scope.jobs.length == 0)
+    {
+        for (var i = 0; i < names.length; i++) {
+            $scope.jobs.push({
+                name: names[i],
+                company: companies[i],
+                pay: pays[i],
+                desc: descriptions[i],
+                logo: logos[i]
+            });
+        }
+        publisJobs = $scope.jobs;
+    }
+
+    $scope.removeFromJobs = function(Job) {
+        for (var i = 0; i < $scope.jobs.length; i++)
+        {
+            $scope.undoJobs.push($scope.jobs[i]);
+
+            if ($scope.jobs[i].name == Job.name)
+            {
+                $scope.jobs.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    $scope.undoRemove = function() {
+        if ($scope.undoJobs.length > 0)
+        {
+            $scope.jobs.unshift( $scope.undoJobs[$scope.undoJobs.length - 1] );
+            $scope.undoJobs.splice($scope.undoJobs.length - 1, 1);
+        }
     }
 
     $scope.populateJobs = function() {
@@ -67,8 +96,8 @@ app.controller('UserController', [
     }
 
     /* User Views */
-    //$scope.currentUserType = "jobSeeker";
-    $scope.currentUserType = "jobProvider";
+    $scope.currentUserType = "jobSeeker";
+    //$scope.currentUserType = "jobProvider";
     var candidates = ["Jack A", "Jill B", "Bob B", "Bill E", "Litho P", "Thabo F", "Jack G", "Lily B", "Jeff R", "Ken M"];
     var jobApplied = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach", "Car Salesman", "Mobile Dev", "Hockey Coach", "Hockey Coach"];
 
