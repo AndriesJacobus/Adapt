@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25fc0873-071f-43cc-bda3-bd8a14fe1b85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/facebookanalytics.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/mark.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/stephanie.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/generation-logo.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/generation-nav.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/generation-portal-style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/generation-portal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dashboard.html" afterPath="$PROJECT_DIR$/views/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/login.html" afterPath="$PROJECT_DIR$/views/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/userCtrl.js" afterPath="$PROJECT_DIR$/app/controllers/userCtrl.js" />
     </list>
     <ignored path="Adapt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -200,11 +194,12 @@
       <updated>1508020703667</updated>
       <workItem from="1508020704470" duration="101000" />
       <workItem from="1508034487174" duration="88000" />
+      <workItem from="1508042397254" duration="103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189000" />
+    <option name="totallyTimeSpent" value="292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />

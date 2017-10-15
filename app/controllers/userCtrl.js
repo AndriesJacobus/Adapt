@@ -178,6 +178,7 @@ app.controller('UserController', [
     }
 
     /* Other */
+
     $scope.setcurrentUserType = function (id) {
         if ($scope.userEmail == "")
         {

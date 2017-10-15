@@ -7,8 +7,8 @@
             <h3 style = "text-align: center;">Available jobs</h3>
             <h6 style = "text-align: center;"><i>Matched according to your skillset</i></h6>
             <center>
-                <div class="grid" ng-repeat = "j in jobs">
-                    <div class="item w3-card-4" ng-click="prioritizeJob(j)">
+                <div class="grid">
+                    <div class="item w3-card-4" ng-repeat = "j in jobs" ng-click="prioritizeJob(j)">
                         <div class="caption">
                             <span>{{j.name}}</span>
                         </div>
@@ -31,8 +31,8 @@
             <h3 style = "text-align: center;">Available candidates</h3>
             <h6 style = "text-align: center;"><i>Matched according to your job criteria</i></h6>
             <center>
-                <div class="grid" ng-repeat = "w in workers">
-                    <div class="item w3-card-4" ng-click="prioritizeCand(w)">
+                <div class="grid">
+                    <div class="item w3-card-4" ng-repeat = "w in workers" ng-click="prioritizeCand(w)">
                         <div class="caption">
                             <span>{{w.candidate}}</span>
                         </div>
