@@ -1,6 +1,6 @@
 <div id="fb-root"></div>
 <div class="container-fluid">
-    <div class="container registerLogin w3-animate-bottom" style="margin-top: 30vh;">
+    <div class="container registerLogin w3-animate-bottom" style="margin-top: 10vh;">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default w3-card-4">
@@ -8,7 +8,7 @@
                         <h3 class="panel-title">Please Login</h3>
                     </div>
                     <div class="panel-body">
-                        <form ng-submit="submit();">
+                        <form>
                             <div class="form-group">
                                 <input class="form-control" id="email" placeholder="E-mail" name="email" type="email" autofocus ng-model="email">
                             </div>
@@ -16,8 +16,8 @@
                                 <input class="form-control" id="password" placeholder="Password" name="password" type="password" value="" ng-model="password">
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
-                            <input type="submit" value="Job Seeker Login" class="btn btn-block" />
-                            <input type="submit" value="Job Provider Login" class="btn btn-block" />
+                            <input id = "sIn" type="submit" value="Job Seeker Login" class="btn btn-block" />
+                            <input id = "pIn" type="submit" value="Job Provider Login" class="btn btn-block" />
 
                         </form>
                         <br/>
@@ -54,6 +54,14 @@
 
     };
 
+    $("#sIn").click(function() {
+        checkLoginState('s');
+    });
+
+    $("#pIn").click(function() {
+        checkLoginState('p');
+    });
+
     function reload() {
         window.location.replace("#/dashboard");
     }
@@ -85,7 +93,7 @@
     function checkLoginState(profileType) {
         loginBypassType = profileType;
 
-        setTimeout(reload, 1000);
+        setTimeout(reload, 500);
 
         FB.getLoginStatus(function(response) {
             console.log("get login check state");
