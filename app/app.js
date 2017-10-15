@@ -46,6 +46,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: 'views/generation-portal.html',
             controller: 'UserController'
         })
+        .when('/confirm-information', {
+            templateUrl: 'views/confirm-information.html',
+            controller: 'UserController'
+        })
         .when('/error', {
             templateUrl: 'views/err.html',
             controller: 'ErrController'

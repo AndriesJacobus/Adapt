@@ -1,0 +1,82 @@
+<div class="container-fluid">
+	<div class="container registerLogin w3-animate-bottom">
+		<div class="row">
+	        <div class="col-md-4 col-md-offset-4">
+	            <div class="login-panel panel panel-default w3-card-4">
+	                <div class="panel-heading">
+	                    <h3 class="panel-title">Confirm Your Details</h3>
+	                </div>
+	                <div class="panel-body">
+	                    <form name="frmRegister" ng-submit="submit()">
+                            <!--div class="form-group">
+                                <input class="form-control" id = "uName" placeholder="Name" name="uName" type="string" value="" ng-model="name">
+                            </div-->
+                             <div class="group">      
+							      <input id = "uName" type="text" required placeholder="Mark" name="uName" ng-model="uName" value="Mark">
+							      <span class="highlight"></span>
+							      <span class="bar"></span>
+							    </div>
+							     <div class="group">      
+							      <input id = "uSurname" type="text" required placeholder="Zuckerberg" name="uSurname" ng-mode ="surname" >
+							      <span class="highlight"></span>
+							      <span class="bar"></span>
+							    </div>
+                            <div class="form-group">
+                                <input class="form-control" id = "email" placeholder="markymark@facebook.com" name="email" type="email"  ng-model="email">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id = "phone" placeholder="+2779 682 2616" name="email" type="email"  ng-model="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="About">I studied:</label>
+                           <select class="browser-default" ng-click ="setCountrySelected()" id="selectCountry" class="form-control" name="country">
+									<option value="">Health Care Services</option>
+								 	<option  value="">Web development</option>
+								 	<option  value="">Sewing</option>
+							</select>
+
+							</div>
+                            <label for=""><h5>This is what we have on you for your CV so far, tell us a little bit more about you?</h5></label>
+							<div class="form-group" ng-if="isCountrySelected()">
+                           	<select  id="selectCategory" ng-click ="setCategorySelected()" class="form-control" name="Category">
+								<option ng-repeat="i in arr"> {{i}} </option>
+							</select>
+							
+							</div>
+							 <div class="form-group">
+							      <label for="About">Skills:</label>
+							      <textarea class="form-control" rows="5" id="About" placeholder="Maybe your good at computers? or public speaking?"></textarea>
+							    </div>
+                            
+                             <div class="form-group">
+							      <label for="About">Interests:</label>
+							      <textarea class="form-control" rows="5" id="About" placeholder="Reading or extreme sports, what ever you feel"></textarea>
+							    </div>
+                            
+                            <div class="form-group">
+							      <label for="About">Work Experience:</label>
+							      <textarea class="form-control" rows="5" id="About" placeholder="Anything goes"></textarea>
+							    </div>
+
+                            <div class="form-group">
+                                <input class="form-control" id = "password" placeholder="Password" name="password" type="password" value="" ng-model="password">
+                            </div>
+
+                             <div class="form-group">
+                               <!--<input class="form-control" id = "Confirm_Password" placeholder="Cornfirm Password" name="password" type="password" value="" ng-model="password"-->
+                                <input class="form-control" id ="Confirm_Password" type="password" placeholder="Confirm Password" required ng-model="Confirm_Password">
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <a href="/#/jobmatch" style="text-align:center;border: blue 1px solid; padding:10px">Confirm Details</a>
+	                    </form>
+	                    <div class="switch">
+	                    	<a href="/#/login">Already have an account?</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div> 
+</div>
+
+
