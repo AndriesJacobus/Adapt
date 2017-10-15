@@ -135,6 +135,7 @@ app.controller('UserController', [
     var jobApplied = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach", "Car Salesman", "Mobile Dev", "Hockey Coach", "Hockey Coach"];
 
     $scope.workers = publisCand;
+    $scope.activeCUndo = publisactiveCU;
     $scope.undoCand = [];
 
     if ($scope.workers.length == 0)
@@ -151,6 +152,16 @@ app.controller('UserController', [
         publisCand = $scope.workers;
     }
 
+    if ($scope.activeCUndo.length != 0)
+    {
+        for (var i = 0; i < $scope.activeCUndo.length; i++) {
+
+            $scope.workers.unshift( $scope.activeCUndo[i] );
+        }
+        publisactiveCU = [];
+        $scope.activeCUndo = publisactiveCU;
+    }
+
     $scope.removeFromCand = function(Cand) {
         for (var i = 0; i < $scope.workers.length; i++)
         {
@@ -161,6 +172,19 @@ app.controller('UserController', [
                 break;
             }
         }
+    }
+
+    $scope.activeRemoveFromCand = function(Cand) {
+        for (var i = 0; i < $scope.workers.length; i++)
+        {
+            if ($scope.workers[i].candidate == Cand.candidate)
+            {
+                $scope.activeCUndo.push($scope.workers[i]);
+                $scope.workers.splice(i, 1);
+                break;
+            }
+        }
+        publisactiveCU = $scope.activeCUndo;
     }
 
     $scope.undoRemoveCand = function() {
