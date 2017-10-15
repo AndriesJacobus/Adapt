@@ -3,8 +3,8 @@
     
     <div ng-if = "currentUserType == 'jobSeeker'">
         <div class="dashboard w3-animate-top" ng-repeat = "j in jobs" >
-            <h2 style = "text-align: center;">Job Match</h2>
-            <h6 style = "text-align: center;"><i>Swipe Left to Accept or Left to Decline</i></h6>
+            <h4 style = "text-align: center;">Job Matches:</h4>
+            <h6 style = "text-align: center;"><i>Tap like to Accept or dislike to Decline</i></h6>
             <center>
                 <div class = "swiperCard">
                     <div class = "title">
@@ -35,23 +35,30 @@
     </div>
 
     <div ng-if = "currentUserType == 'jobProvider'">
-        <div class="dashboard w3-animate-top" ng-repeat = "j in jobs" >
-            <h2 style = "text-align: center;">Job Match</h2>
-            <h6 style = "text-align: center;"><i>Swipe Left to Accept or Left to Decline</i></h6>
+        <div class="dashboard w3-animate-top" ng-repeat = "w in workers" >
+            <h4 style = "text-align: center;">Candidate Matches:</h4>
+            <h6 style = "text-align: center;"><i>Tap like to Accept or dislike to Decline</i></h6>
             <center>
                 <div class = "swiperCard">
                     <div class = "title">
                         <br/>
-                        <h5>{{j.name}}</h5>
+                        <h5>{{w.candidate}}</h5>
                     </div>
-                    <div class = "banner">
-                        <img src="{{j.logo}}" style = "height: 100%; width: auto;" />
-                    </div>
+                    <img src="{{w.profile}}" style = "height: 100%; width: auto;" />
                     <div class = "info">
-                    
+                        <br/>
+                        <span>Job applying for: {{w.jobApply}}</span>
+                        <br/>
+                        <br/>
+                        <span>Skills: {{w.skill}}</span>
+                        <br/>
+                        <br/>
+                        <span>Address: {{w.address}}</span>
                     </div>
                     <div class = "buttons">
-                    
+                        <a class="btn" style = "background-color: #D52D2D;" ng-click = "removeFromCand(w)"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                        <a class="btn" style = "background-color: #ffa500;" ng-click = "undoRemoveCand()"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                        <a class="btn" style = "background-color: #3B5998;" ng-click = ""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </center>

@@ -3,7 +3,8 @@
     <div class="dashboard w3-animate-top">
 
         <div ng-if = "currentUserType == 'jobSeeker'">
-             <h2 style = "text-align: center;">Available jobs</h2>
+            <br/>
+            <h3 style = "text-align: center;">Available jobs</h3>
             <h6 style = "text-align: center;"><i>Matched according to your skillset</i></h6>
             <center>
                 <div class="grid">
@@ -26,7 +27,8 @@
         </div>
     
         <div ng-if = "currentUserType == 'jobProvider'">
-             <h2 style = "text-align: center;">Available candidates</h2>
+            <br/>
+            <h3 style = "text-align: center;">Available candidates</h3>
             <h6 style = "text-align: center;"><i>Matched according to your job criteria</i></h6>
             <center>
                 <div class="grid">
@@ -34,10 +36,14 @@
                         <div class="caption">
                             <span>{{w.candidate}}</span>
                         </div>
-                        <div class="icon" style = "background: #3498db; color: white; text-align: left;">
-                            <span><b>Job:</b><br/> {{w.jobApply}}</span>
-                            <br/>
-                        </div>
+                            <div class="icon" style = "background: #3498db; color: white; text-align: left;">
+                                <center>
+                                    <img src="{{w.profile}}" style = "height: 10vh; max-height: 10vh; width: auto;" />
+                                </center>
+                                <br/>
+                                <span><b>Job:</b><br/> {{w.jobApply}}</span>
+                                <br/>
+                            </div>
                     </div>
                     <br/>
                     <br/>

@@ -22,7 +22,7 @@ app.controller('UserController', [
     /* Jobs */
     var names = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach", "Car Salesman", "Mobile Dev", "Hockey Coach"];
     var companies = ["DevTec", "MERC", "JSE", "BMW", "Facebook", "RSA", "BMW", "Facebook", "RSA"];
-    var logos = ["img/1.jpeg", "img/2.jpeg", "img/3.jpeg", "img/4.jpeg", "img/5.jpeg", "img/6.jpeg", "img/7.jpeg", "img/8.jpeg", "img/9.jpeg"];
+    var logos = ["img/Companies/1.jpeg", "img/Companies/2.jpeg", "img/Companies/3.jpeg", "img/Companies/4.jpeg", "img/Companies/5.jpeg", "img/Companies/6.jpeg", "img/Companies/7.jpeg", "img/Companies/8.jpeg", "img/Companies/9.jpeg"];
     var pays = ["R20 000pm", "R10 000pm", "R15 000pm", "R5 000pm", "R1pm", "R500 000pm", "R5 000pm", "R1pm", "R500 000pm"];
     var descriptions = ["Develop web stuff", "Sell general", "Sell stocks", "Sell cars", "Develop apps", "Teach hochey", "Sell cars", "Develop apps", "Teach hochey"];
 
@@ -46,10 +46,9 @@ app.controller('UserController', [
     $scope.removeFromJobs = function(Job) {
         for (var i = 0; i < $scope.jobs.length; i++)
         {
-            $scope.undoJobs.push($scope.jobs[i]);
-
             if ($scope.jobs[i].name == Job.name)
             {
+                $scope.undoJobs.push($scope.jobs[i]);
                 $scope.jobs.splice(i, 1);
                 break;
             }
@@ -96,17 +95,49 @@ app.controller('UserController', [
     }
 
     /* User Views */
-    $scope.currentUserType = "jobSeeker";
-    //$scope.currentUserType = "jobProvider";
+    //$scope.currentUserType = "jobSeeker";
+    $scope.currentUserType = "jobProvider";
     var candidates = ["Jack A", "Jill B", "Bob B", "Bill E", "Litho P", "Thabo F", "Jack G", "Lily B", "Jeff R", "Ken M"];
+    var profiles = ["img/Candidates/1.jpg", "img/Candidates/2.jpg", "img/Candidates/3.jpg", "img/Candidates/4.jpg", "img/Candidates/5.jpg", "img/Candidates/6.jpg", "img/Candidates/7.jpg", "img/Candidates/8.jpg", "img/Candidates/9.jpg", "img/Candidates/10.jpg"];
+    var address = ["123 West Street, Sandton", "55 Jack Street, Johannesburg", "12 Moore Ave, Centurion", "1 Lane Road, Pretoria", "25 Jakcosn Str, Cape Town", "33 Job Lane, Pretoria", "45 River Street, Cape Town", "10 July Ave, Sandton", "1 Mark Road, Midrand", "33 Pollok Street, Johannesburg"];
+    var skills = ["Pharmacist, Carpenter", "Manager, Pipefitter", "Waiter, Suit Tailor", "Waiter, Manager", "Suit Tailor, Retail Career Advancement", "Insurance Broker, Chef", "Marketing Consultant", "Pipefitter, Steamfitter", "Sales Manager, Programa Front-end, Plumber", "Nurse, Suit Tailor"];
     var jobApplied = ["Web Developer", "Merchant", "Stock Broker", "Car Salesman", "Mobile Dev", "Hockey Coach", "Car Salesman", "Mobile Dev", "Hockey Coach", "Hockey Coach"];
 
-    $scope.workers = [];
-    for (var i = 0; i < candidates.length; i++) {
-        $scope.workers.push({
-            candidate: candidates[i],
-            jobApply: jobApplied[i]
-        });
+    $scope.workers = publisCand;
+    $scope.undoCand = [];
+
+    if ($scope.workers.length == 0)
+    {
+        for (var i = 0; i < candidates.length; i++) {
+            $scope.workers.push({
+                candidate: candidates[i],
+                profile: profiles[i],
+                jobApply: jobApplied[i],
+                address: address[i],
+                skill: skills[i]
+            });
+        }
+        publisCand = $scope.workers;
+    }
+
+    $scope.removeFromCand = function(Cand) {
+        for (var i = 0; i < $scope.workers.length; i++)
+        {
+            if ($scope.workers[i].name == Cand.name)
+            {
+                $scope.undoCand.push($scope.workers[i]);
+                $scope.workers.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    $scope.undoRemoveCand = function() {
+        if ($scope.undoCand.length > 0)
+        {
+            $scope.workers.unshift( $scope.undoCand[$scope.undoCand.length - 1] );
+            $scope.undoCand.splice($scope.undoCand.length - 1, 1);
+        }
     }
 
     $scope.setcurrentUserType = function (id) {

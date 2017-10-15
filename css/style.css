@@ -790,6 +790,7 @@ ul.nav.navbar-nav a:hover {
 
 .swiperCard {
     height: 70vh;
+    max-height: 70vh;
     width: 70vw;
     background-color: #2980b9;
 }
